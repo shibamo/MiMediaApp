@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>TV - {{item.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <video controls="controls" width="100%" autoplay 
+    [src]="resourceService.tvVideoUrlPrefix + item.url" ></video>
+    <ion-card-content>
+      <ion-card-title>
+        {{item.name}}
+      </ion-card-title>
+      <p *ngFor="let _content of item.content.split('\n')">
+        {{_content}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

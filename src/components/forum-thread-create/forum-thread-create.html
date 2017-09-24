@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <!-- <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">
+        <span color="primary" showWhen="ios">
+          取消
+        </span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>发新帖</ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>
+        <span color="primary" showWhen="ios">
+          完成
+        </span>
+        <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form *ngIf="form" [formGroup]="form">
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" placeholder="帖子标题" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-textarea rows="5" placeholder="帖子内容" formControlName="content"></ion-textarea>
+      </ion-item>
+
+      <!-- 已有图文段 -->
+      <ion-item *ngFor="let item of sections; let i = index">
+        <p *ngIf="item.beforeContent">
+          {{item.beforeContent}}
+        </p>
+        <img [src]="item.imageFileLink"/>
+        <p *ngIf="item.afterContent">
+          {{item.afterContent}}
+        </p>
+        <div text-center>
+          <button ion-button color="danger" outline round
+          (click)='deleteSection(i)'>删除图文段</button>
+        </div>
+      </ion-item>
+
+      <div *ngIf="sections.length < 5" text-center>
+        <button ion-button color="secondary" outline round
+        (click)='addSection()'>增加图文段</button>
+      </div>
+    </ion-list>
+  </form>
+</ion-content>

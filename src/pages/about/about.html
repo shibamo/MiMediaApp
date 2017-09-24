@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">
+        <span color="primary" showWhen="ios">
+          返回
+        </span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>联系我们</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="about-header">
+    <img src="assets/img/icon.png">
+  </div>
+  <div padding class="about-info">
+    <h4>联系方式</h4>
+    <ion-list no-lines>
+      <ion-item>
+        <ion-icon name="mail"></ion-icon> info@dchineseradio.com
+      </ion-item>
+      <p>
+          密西根中文广播电视台DCRTV是美国密西根州当地唯一华人立体化媒体公司。我们拥有官方网站，手机App，24个微信群，实体电台录音室，节目演播室。我们组织举办各类活动及节目录制，积极促进文化经济交流互访促进活动，是北美华文媒体联合会成员。
+      </p>      
+    </ion-list>
+  </div>
+</ion-content>

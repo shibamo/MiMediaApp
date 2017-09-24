@@ -1,0 +1,39 @@
+forum-thread-create {
+  .profile-image-wrapper {
+    text-align: center;
+    margin: 20px 0;
+
+    .profile-image {
+      width: 100%;
+      height: 200px;
+      // height: 96px;
+      border-radius: 5px;
+
+      display: inline-block;
+
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .profile-image-placeholder {
+      display: inline-block;
+
+      background-color: #eee;
+      // width: 96px;
+      width: 100%;
+      height: 200px;
+      // height: 96px;
+      // border-radius: 50%;
+      border-radius: 5px;
+
+      font-size: 12px;
+
+      ion-icon {
+        font-size: 44px;
+        margin-bottom: -10px;
+        margin-top: 80px;
+      }
+    }
+  }
+}

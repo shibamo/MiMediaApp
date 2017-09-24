@@ -1,0 +1,58 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title>个人资料</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="profile-page" text-center>
+
+  <ion-item>
+    <ion-label stacked color="primary">
+      个人头像(点击可更改):
+      <ion-avatar *ngIf="!!userService._user">
+        <img [src]="resourceService.avatarImageUrlPrefix + userService._user.avatar" 
+          class="avatar-image-preview" (click)='changeAvatar()'>
+      </ion-avatar>
+    </ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="imageRetrieved">
+    <ion-label stacked color="primary">
+        更改后头像(预览):
+      <ion-avatar >
+        <img [src]="sanitizer.bypassSecurityTrustUrl(imageFileData)" class="avatar-image-preview" />
+      </ion-avatar>
+      <div text-center>
+      <button ion-button color="secondary" outline round
+      (click)='setAvatarWithFilePath()'>确认更改</button>
+      </div>
+    </ion-label>
+  </ion-item>
+
+  <ion-list no-lines>
+    <ion-item>
+      <ion-label stacked color="primary">
+        您的论坛用户名: {{userService._user && userService._user.name}}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked color="primary">
+        您的注册邮箱: {{userService._user && userService._user.email}}
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+  
+  <div>
+    <button ion-button (click)="logout()" block>退出登录</button>
+  </div>
+
+  <div>
+    <button ion-button (click)="changePassword()" block color="danger">更改密码</button>
+  </div>
+
+</ion-content>

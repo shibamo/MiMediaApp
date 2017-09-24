@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>论坛列表{{items.length ? '' : ' 加载中...'}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="gotoBoard(item)">
+      <img width="40" height="40" [src]="resourceService.boardImageUrlPrefix + item.image" item-left />
+      <ion-label color='primary'>{{item.caption}}</ion-label>
+    </button>
+  </ion-list> -->
+
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of items" (click)="gotoBoard(item)" col-6 wrap>
+        <img class="board-image" [src]="resourceService.boardImageUrlPrefix + item.image" />
+        <div class="board-title">{{item.caption}}</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
+</ion-content>
+
+<ion-footer>
+  <ad-position-promotion [adName]='adName'></ad-position-promotion>
+</ion-footer>  

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">
+        <span color="primary" showWhen="ios">
+          取消
+        </span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>帖子图文段</ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="done()" [disabled]="!isReadyToSave()" strong>
+        <span color="primary" showWhen="ios">
+          完成
+        </span>
+        <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="beforeContent" placeholder="图前文字(可为空)"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <div text-center>
+        <button ion-button color="secondary" outline round
+        (click)='setImage()'>指定图片</button>
+      </div>
+      <img [src]="sanitizer.bypassSecurityTrustUrl(imageFileData)" class="" *ngIf="imageRetrieved"/>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="afterContent" placeholder="图前文字(可为空)"></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>

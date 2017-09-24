@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>电台节目</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="updateList($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="下拉更新"
+      refreshingSpinner="circles"
+      refreshingText="正在更新...">
+    </ion-refresher-content>
+  </ion-refresher>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of items" (click)="gotoStation(item)" col-6 wrap>
+        <img class="station-image" [src]="resourceService.radioImageUrlPrefix + item.lastPrograme.image" />
+        <div class="station-title">{{item.caption}}</div>
+        <div class="station-subtitle">最新: {{item.lastPrograme.name}}</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+
+<ion-footer>
+  <ad-position-promotion [adName]='adName'></ad-position-promotion>
+</ion-footer> 

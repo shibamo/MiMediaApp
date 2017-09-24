@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{item.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addReply()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>     
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="resourceService.avatarImageUrlPrefix + item.avatar">
+      </ion-avatar>
+      <h2>{{item.name}}</h2>
+      <p>{{item.authorName}}(楼主) {{item.date}}</p>
+    </ion-item>
+
+    <ion-card-content>
+      <div [innerHTML]="item.content"></div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngFor="let reply of item.replies">
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="resourceService.avatarImageUrlPrefix + reply.avatar">
+      </ion-avatar>
+      <p>{{reply.authorName}} {{reply.date}}</p>
+    </ion-item>
+
+    <ion-card-content>
+      <p *ngFor="let _content of reply.content.split('\n')">
+        {{_content}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" mini (click)="addReply()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

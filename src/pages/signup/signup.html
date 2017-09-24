@@ -1,0 +1,57 @@
+<ion-header>
+	<ion-navbar>
+		<ion-buttons start>
+			<button ion-button (click)="cancel()">
+				<span color="primary" showWhen="ios">
+					取消
+				</span>
+				<ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+			</button>
+		</ion-buttons>
+		<ion-title>注册新用户</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+
+	<div class="logo">
+		<img src="assets/img/icon.png" alt="Ionic Logo">
+	</div>
+
+	<form #signupForm="ngForm" novalidate>
+		<ion-list no-lines>
+
+			<ion-item>
+				<ion-label stacked color="primary">您的论坛用户名(可以是中文) *</ion-label>
+				<ion-input [(ngModel)]="signup.name" name="name" type="text" #name="ngModel" required>
+				</ion-input>
+			</ion-item>
+			<p ion-text [hidden]="name.valid || submitted == false" color="danger" padding-left>
+				请输入您的用户名
+			</p>
+
+			<ion-item>
+				<ion-label stacked color="primary">您的Email邮箱 *</ion-label>
+				<ion-input [(ngModel)]="signup.email" name="email" type="email" #email="ngModel" required>
+				</ion-input>
+			</ion-item>
+			<p ion-text [hidden]="submitted == false || isEmailValid()" color="danger" padding-left>
+				请输入您的有效Email邮箱账户
+			</p>
+
+			<ion-item>
+				<ion-label stacked color="primary">输入密码 *</ion-label>
+				<ion-input [(ngModel)]="signup.password" name="password" type="password" #password="ngModel" minlength="6" required>
+				</ion-input>
+			</ion-item>
+			<p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
+				请输入密码(至少6个字符)
+			</p>
+		</ion-list>
+
+		<div padding>
+			<button ion-button (click)="onSignup(signupForm)" type="submit" block>创建账户</button>
+		</div>
+	</form>
+
+</ion-content>

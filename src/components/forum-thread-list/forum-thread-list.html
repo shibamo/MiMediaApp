@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{board.caption}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addThread()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>    
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="updateList($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="下拉更新"
+      refreshingSpinner="circles"
+      refreshingText="正在更新...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list [virtualScroll]="items" approxItemHeight="90px">
+    <button ion-item *virtualItem="let item" (click)="gotoThread(item)">
+      <ion-avatar item-start>
+        <img [src]="resourceService.avatarImageUrlPrefix + item.avatar">
+      </ion-avatar>
+      <h2>{{item.authorName}}</h2>
+      <h3>{{item.name}}</h3>
+      <h4>{{item.date}}</h4>      
+      <ion-badge color="light" item-end>{{item.replies.length}}</ion-badge>
+    </button>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" mini (click)="addThread()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

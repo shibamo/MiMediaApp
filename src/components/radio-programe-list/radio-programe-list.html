@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{listInfo.caption}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="updateList($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="下拉更新"
+      refreshingSpinner="circles"
+      refreshingText="正在更新...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngFor="let item of items" (click)='show(item)'>
+    <img [src]="resourceService.radioImageUrlPrefix + item.image"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{item.name}}
+      </ion-card-title>
+      <p>
+        {{item.date}} {{item.shortContent}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

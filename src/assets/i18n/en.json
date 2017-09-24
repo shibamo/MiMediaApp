@@ -1,0 +1,61 @@
+{
+  "MENU": "Menu",
+  "BACK_BUTTON_TEXT" : "Back",
+  "SAVE" : "Save",    
+  "CALL_SUPPORT" : "Call support",
+
+  "NAME": "Name",
+  "EMAIL": "Email",
+  "USERNAME": "Username",
+  "PASSWORD": "Password",
+  "LOGIN": "Sign in",
+  "LOGOUT": "Log out",  
+  "FLOW_TASK": "Flow Tasks",
+  "FORM": "Form",
+  "FILES": "Files",
+  "OPERATION": "Operation",
+  "CHOOSE_FLOW_CONNECTION": "Choose next step",
+  "CHOOSE_TO_NODE_ROLE": "Choose owner of next step task",
+  "PLEASE_WAIT": "Please wait...",
+  "SUCCESSFULLY_SUBMITTED": "Successfully submitted",
+  "OPERATION_FAILED": "Operation failed",
+  "SUCCESSFULLY_CONNECTED": "Successfully connected",
+
+  "LOGIN_TITLE": "Login OPAS",
+  "LOGIN_BUTTON": "Login",
+  "SUBMIT_BUTTON": "Submit",
+  "REJECT_BUTTON": "Reject",
+  "REMARK_OF_APPROVER": "Remark",
+
+  "SYSTEM_SETTING": "System Setting", 
+  "API_ADDRESS": "API Address", 
+  "TEST": "Test",   
+
+  "PURCHASE_REQUISITION": "Purchase Requisition",
+  "ITEM_TYPE": "Item Type",
+  "ESTIMATED_COST": "Estimated_Cost",
+  "DOCUMENT_NO": "Document No",
+  "DEPARTMENT": "Department",
+  "COSTCENTER": "Cost Center",
+  "IS_FIRSTBUY": "Is FirstBuy?",
+  "REASON": "Reason",
+  "DESCRIPTION": "Description",
+  "ESTIMATED_COST_IN_RMB": "Estimated Cost In RMB",
+
+  "PURCHASE_ORDER": "Purchase Order",
+  "CURRENCY_TYPE": "Currency Type",
+  "TOTAL_AMOUNT_IN_RMB": "Total Amount(RMB)",
+  "VENDOR_NAME": "Vendor Name",
+
+  "GOODS_RECEIVING": "Goods Receiving",
+
+  "PAYMENT": "Payment",
+
+  "DETAIL_TABLE": "Details",
+
+  "INTERNAL_ADDRESSBOOK" : "Internal addressbook",  
+  "BY_NAME": "By name",
+  "BY_DEPARTMENT": "By department", 
+  "BY_ROLE": "By role", 
+  "SEARCH": "Search" 
+}

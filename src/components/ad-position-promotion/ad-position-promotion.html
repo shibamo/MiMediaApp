@@ -1,0 +1,12 @@
+<!--  <ion-toolbar style='padding: 0px;'>
+    <img [src]='imageSrc'>
+  </ion-toolbar>
+-->
+<ion-toolbar style='padding: 0px; background-color: white;'>
+  <ion-slides *ngIf="adList.length" autoplay='2000' loop=true pager=true parallax=true speed=1000>
+    <ion-slide *ngFor="let item of adList">
+      <img [src]='basePath + item.imageUrl'>
+    </ion-slide>
+  </ion-slides>
+</ion-toolbar>
+
