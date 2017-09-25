@@ -41,7 +41,7 @@ export class LoginPage {
         let toast = this.toastCtrl.create({
           message: "登录失败,请重试: " + //原因描述
             (err.json && err.json().data.message || err.toString()),
-          duration: 3000,
+          duration: 5000,
           position: 'middle'
         });
         toast.present();

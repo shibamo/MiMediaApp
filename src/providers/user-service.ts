@@ -67,7 +67,7 @@ export class UserService {
     seq.map(res => res.json())
       .subscribe(res => {
         // If the API returned a successful response, mark the user as logged in
-        console.debug(res);
+        //console.debug(res);
         if (res.status == 'success') {
           this._setLoggedInData(res);
         } else {
