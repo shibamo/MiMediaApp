@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/timeout';
 //import * as _ from 'lodash';
 
 import { Storage } from '@ionic/storage';
@@ -40,21 +41,22 @@ export class VideoService {
     }); 
   }
 
-  private loadChannelData(forceUpdate: boolean = false): any {
+  private loadChannelData(forceUpdate: boolean = false): Observable<any> {
     if (this.channelData && !forceUpdate) { 
       //如果已有数据并且未指定强制更新, 则直接从已有数据读取
       return Observable.of(this.channelData);
     } else { //需要从后台读取并缓存下来
-      let seq = this.api.get('tv-programe/channels').map((_data: any) =>{
+      let seq = this.api.get('tv-programe/channels')
+      .map((_data: any) =>{
         return _data.json();
       }).share();
 
       seq.map((_data: any) => {
         this.channelData = _data;
         this.storage.set("tv-channel", JSON.stringify(_data));
-      }).subscribe();
+      });
 
-      return seq; 
+      return seq;
     }
   }
 
@@ -64,7 +66,7 @@ export class VideoService {
     });
   }
 
-  private load(forceUpdate: boolean = false): any {
+  private load(forceUpdate: boolean = false): Observable<any> {
     if (this.data && !forceUpdate) { //直接从缓存数据读取
       return Observable.of(this.data);
     } else { //需要从后台读取并缓存下来
@@ -75,7 +77,7 @@ export class VideoService {
       seq.map((_data: any) => {
         this.data = _data;
         this.storage.set("tv-programe", JSON.stringify(_data));
-      }).subscribe();
+      });
 
       return seq; 
     }
@@ -86,8 +88,4 @@ export class VideoService {
       return _data;
     });
   }
-
-
-
-
 }

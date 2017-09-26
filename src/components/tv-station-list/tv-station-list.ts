@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { Refresher, ToastController,NavController } from 'ionic-angular';
 
+import { Observable } from 'rxjs/Observable';
+
 import { VideoService } from '../../providers/video-service';
 import {ResourceService} from '../../providers/resource-service';
 
@@ -30,12 +32,6 @@ export class TVStationListComponent {
     this.adComponent.updateSlides();
   }
   
-  // updateList() {
-  //   this.videoService.getchannelData().subscribe((data: any) => {
-  //     this.items = data;
-  //   });
-  // }
-
   gotoStation(item: any){
     this.navCtrl.push(TVProgrameListComponent, {
       item: item
@@ -44,16 +40,26 @@ export class TVStationListComponent {
 
   updateList(refresher?: Refresher) {
     this.videoService.getchannelData(refresher? true : false)
-    .subscribe((_data: any) => {
-      if(_data){
-        this.items = _data;
+    .subscribe(
+      (_data: any) => {
+        if(_data){
+          this.items = _data;
+          refresher && refresher.complete();
+          refresher && this.toastCtrl.create({
+            message: '已刷新...',
+            position: 'middle',
+            duration: 1000
+          }).present();           
+        }
+      },
+      (_error: any) =>{
         refresher && refresher.complete();
         refresher && this.toastCtrl.create({
-          message: '已刷新...',
+          message: '获取数据出错,请检查您的网络连接情况.' + _error,
           position: 'middle',
-          duration: 1000
-        }).present();           
+          duration: 10000
+        }).present();
       }
-    });
+    );
   }
 }

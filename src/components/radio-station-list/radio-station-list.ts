@@ -35,26 +35,30 @@ export class RadioStationListComponent {
   public ionViewWillEnter() {
     this.adComponent.updateSlides();
   }
-  
-  // updateList() {
-  //   this.radioStationsData.getData().subscribe((data: any) => {
-  //     this.items = data;
-  //   });
-  // }
 
   updateList(refresher?: Refresher) {
     this.radioService.getchannelData(refresher? true : false)
-    .subscribe((_data: any) => {
-      if(_data){
-        this.items = _data;
+    .subscribe(
+      (_data: any) => {
+        if(_data){
+          this.items = _data;
+          refresher && refresher.complete();
+          refresher && this.toastCtrl.create({
+            message: '已刷新...',
+            position: 'middle',
+            duration: 1000
+          }).present();           
+        }
+      },
+      (_error: any) =>{
         refresher && refresher.complete();
         refresher && this.toastCtrl.create({
-          message: '已刷新...',
+          message: '获取数据出错,请检查您的网络连接情况.' + _error,
           position: 'middle',
-          duration: 1000
-        }).present();           
+          duration: 10000
+        }).present();
       }
-    });
+    );
   }
 
   gotoStation(item: any){

@@ -44,26 +44,38 @@ export class Api {
       options.search = !options.search && p || options.search;
     }
 
-    return this.http.get(this.url + '/' + endpoint, options);
+    return this.http.get(this.url + '/' + endpoint, options).catch(err => {
+      return Observable.throw(err);
+    });
   }
 
   post(endpoint: string, body: any, options?: RequestOptions) :Observable<Response> {
-    return this.http.post(this.secretUrl + '/' + endpoint, body, options);
+    return this.http.post(this.secretUrl + '/' + endpoint, body, options).catch(err => {
+      return Observable.throw(err);
+    });
   }
 
   postWithoutJwtToken(endpoint: string, body: any, options?: RequestOptions) {
-    return this.http.post(this.secretUrl + '/' + endpoint, body, options);
+    return this.http.post(this.secretUrl + '/' + endpoint, body, options).catch(err => {
+      return Observable.throw(err);
+    });
   }
 
   put(endpoint: string, body: any, options?: RequestOptions) {
-    return this.http.put(this.secretUrl + '/' + endpoint, body, options);
+    return this.http.put(this.secretUrl + '/' + endpoint, body, options).catch(err => {
+      return Observable.throw(err);
+    });
   }
 
   delete(endpoint: string, body: any, options?: RequestOptions) {
-    return this.http.post(this.secretUrl + '/' + endpoint, body, options);
+    return this.http.post(this.secretUrl + '/' + endpoint, body, options).catch(err => {
+      return Observable.throw(err);
+    });
   }
 
   patch(endpoint: string, body: any, options?: RequestOptions) {
-    return this.http.put(this.secretUrl + '/' + endpoint, body, options);
+    return this.http.put(this.secretUrl + '/' + endpoint, body, options).catch(err => {
+      return Observable.throw(err);
+    });
   }
 }

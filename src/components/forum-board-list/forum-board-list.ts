@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 
 import {ForumService} from '../../providers/forum-service';
 import {ResourceService} from '../../providers/resource-service';
@@ -20,6 +20,7 @@ export class ForumBoardListComponent {
   items: Array<{id:number, name: string, caption: string, image: string}> = [];
 
   constructor(public navCtrl: NavController,
+    public toastCtrl: ToastController,     
     public resourceService :ResourceService,     
     public forumService:ForumService,    
   )
@@ -32,9 +33,18 @@ export class ForumBoardListComponent {
   }
 
   updateList() {
-    this.forumService.getBoardsData().subscribe((data: any) => {
-      this.items = data;
-    });
+    this.forumService.getBoardsData().subscribe(
+      (data: any) => {
+        this.items = data;
+      },
+      (_error: any) =>{
+        this.toastCtrl.create({
+          message: '获取数据出错,请检查您的网络连接情况.' + _error,
+          position: 'middle',
+          duration: 10000
+        }).present();
+      }
+    );
   }
 
   gotoBoard(item: any){

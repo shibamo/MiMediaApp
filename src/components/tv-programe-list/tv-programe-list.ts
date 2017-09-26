@@ -33,17 +33,27 @@ export class TVProgrameListComponent {
 
   updateList(refresher?: Refresher) {
     this.videoService.getData(refresher? true : false)
-    .subscribe((data: any) => {
-      if(data){
-        this.items = data[this.listInfo.name];
+    .subscribe(
+      (data: any) => {
+        if(data){
+          this.items = data[this.listInfo.name];
+          refresher && refresher.complete();
+          refresher && this.toastCtrl.create({
+            message: '已获取最新节目单...',
+            position: 'middle',
+            duration: 1000
+          }).present();           
+        }
+      },
+      (_error: any) =>{
         refresher && refresher.complete();
         refresher && this.toastCtrl.create({
-          message: '已获取最新节目单...',
+          message: '获取数据出错,请检查您的网络连接情况.' + _error,
           position: 'middle',
-          duration: 1000
-        }).present();           
+          duration: 10000
+        }).present();
       }
-    });
+    );
   }
 
   doRefresh(refresher?: Refresher) {

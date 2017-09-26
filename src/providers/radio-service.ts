@@ -54,7 +54,7 @@ export class RadioService {
       seq.map((_data: any) => {
         this.channelData = _data;
         this.storage.set("radio-channel", JSON.stringify(_data));
-      }).subscribe();
+      });
 
       return seq; 
     }
@@ -77,7 +77,7 @@ export class RadioService {
       seq.map((data: any) => {
         this.data = data;
         this.storage.set("radio-programe", JSON.stringify(data));
-      }).subscribe();
+      });
 
       return seq; 
     }

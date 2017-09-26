@@ -32,10 +32,20 @@ export class ForumThreadListComponent {
 
   updateList(refresher?: Refresher) {
     this.forumService.getThreadsData(this.board.id, refresher ? true : false).
-    subscribe((data: any) => {
-      this.items = data;
-      refresher && refresher.complete();
-    });
+    subscribe(
+      (data: any) => {
+        this.items = data;
+        refresher && refresher.complete();
+      },
+      (_error: any) =>{
+        refresher && refresher.complete();
+        refresher && this.toastCtrl.create({
+          message: '获取数据出错,请检查您的网络连接情况.' + _error,
+          position: 'middle',
+          duration: 10000
+        }).present();
+      }      
+  );
   }
 
   gotoThread(item){

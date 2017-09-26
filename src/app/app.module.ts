@@ -8,6 +8,7 @@ import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
 import { Device } from '@ionic-native/device';
 import { Network } from '@ionic-native/network';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -122,6 +123,7 @@ import { TakePictureServiceProvider } from '../providers/take-picture-service';
     SplashScreen,
     Device,
     Network,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SettingService,
     ResourceService,
