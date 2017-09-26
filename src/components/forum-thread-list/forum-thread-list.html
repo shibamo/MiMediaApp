@@ -23,7 +23,7 @@
   </ion-refresher>
 
   <ion-list [virtualScroll]="items" approxItemHeight="90px">
-    <button ion-item *virtualItem="let item" (click)="gotoThread(item)">
+    <button ion-item *virtualItem="let item" (tap)="gotoThread(item)">
       <ion-avatar item-start>
         <img [src]="resourceService.avatarImageUrlPrefix + item.avatar">
       </ion-avatar>
@@ -35,7 +35,7 @@
   </ion-list>
 
   <ion-fab right bottom>
-    <button ion-fab color="primary" mini (click)="addThread()">
+    <button ion-fab color="primary" mini (tab)="addThread()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>

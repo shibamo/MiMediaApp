@@ -17,7 +17,7 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-card *ngFor="let item of items" (click)='show(item)'>
+  <ion-card *ngFor="let item of items" (tap)='show(item)'>
     <img [src]="resourceService.radioImageUrlPrefix + item.image"/>
     <ion-card-content>
       <ion-card-title>

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-buttons start>
-      <button ion-button (click)="cancel()">
+      <button ion-button (tap)="cancel()">
         <span color="primary" showWhen="ios">
           取消
         </span>
@@ -12,7 +12,7 @@
     <ion-title>帖子图文段</ion-title>
 
     <ion-buttons end>
-      <button ion-button (click)="done()" [disabled]="!isReadyToSave()" strong>
+      <button ion-button (tap)="done()" [disabled]="!isReadyToSave()" strong>
         <span color="primary" showWhen="ios">
           完成
         </span>
@@ -31,7 +31,7 @@
     <ion-item>
       <div text-center>
         <button ion-button color="secondary" outline round
-        (click)='setImage()'>指定图片</button>
+        (tap)='setImage()'>指定图片</button>
       </div>
       <img [src]="sanitizer.bypassSecurityTrustUrl(imageFileData)" class="" *ngIf="imageRetrieved"/>
     </ion-item>

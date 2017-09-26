@@ -17,7 +17,7 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-card *ngFor="let item of items" (click)="gotoStation(item)">
+  <ion-card *ngFor="let item of items" (tap)="gotoStation(item)">
     <img style="max-height: 200px;" [src]="resourceService.tvImageUrlPrefix + item.lastPrograme.image" />
     <div class="card-title">{{item.caption}}</div>
     <div class="card-subtitle">最新: {{item.lastPrograme.name}}</div>

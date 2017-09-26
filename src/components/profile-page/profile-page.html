@@ -14,7 +14,7 @@
       个人头像(点击可更改):
       <ion-avatar *ngIf="!!userService._user">
         <img [src]="resourceService.avatarImageUrlPrefix + userService._user.avatar" 
-          class="avatar-image-preview" (click)='changeAvatar()'>
+          class="avatar-image-preview" (tap)='changeAvatar()'>
       </ion-avatar>
     </ion-label>
   </ion-item>
@@ -27,7 +27,7 @@
       </ion-avatar>
       <div text-center>
       <button ion-button color="secondary" outline round
-      (click)='setAvatarWithFilePath()'>确认更改</button>
+      (tap)='setAvatarWithFilePath()'>确认更改</button>
       </div>
     </ion-label>
   </ion-item>
@@ -48,11 +48,11 @@
   </ion-list>
   
   <div>
-    <button ion-button (click)="logout()" block>退出登录</button>
+    <button ion-button (tap)="logout()" block>退出登录</button>
   </div>
 
   <div>
-    <button ion-button (click)="changePassword()" block color="danger">更改密码</button>
+    <button ion-button (tap)="changePassword()" block color="danger">更改密码</button>
   </div>
 
 </ion-content>

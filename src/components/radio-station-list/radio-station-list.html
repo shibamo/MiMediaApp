@@ -19,7 +19,7 @@
   
   <ion-grid>
     <ion-row>
-      <ion-col *ngFor="let item of items" (click)="gotoStation(item)" col-6 wrap>
+      <ion-col *ngFor="let item of items" (tap)="gotoStation(item)" col-6 wrap>
         <img class="station-image" [src]="resourceService.radioImageUrlPrefix + item.lastPrograme.image" />
         <div class="station-title">{{item.caption}}</div>
         <div class="station-subtitle">最新: {{item.lastPrograme.name}}</div>

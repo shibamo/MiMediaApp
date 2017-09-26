@@ -8,16 +8,9 @@
 </ion-header>
 
 <ion-content>
-  <!-- <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="gotoBoard(item)">
-      <img width="40" height="40" [src]="resourceService.boardImageUrlPrefix + item.image" item-left />
-      <ion-label color='primary'>{{item.caption}}</ion-label>
-    </button>
-  </ion-list> -->
-
   <ion-grid>
     <ion-row>
-      <ion-col *ngFor="let item of items" (click)="gotoBoard(item)" col-6 wrap>
+      <ion-col *ngFor="let item of items" (tap)="gotoBoard(item)" col-6 wrap>
         <img class="board-image" [src]="resourceService.boardImageUrlPrefix + item.image" />
         <div class="board-title">{{item.caption}}</div>
       </ion-col>
