@@ -3,10 +3,10 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/timeout';
-//import * as _ from 'lodash';
 
 import { Storage } from '@ionic/storage';
 
+import { SettingService } from '../providers/setting-service';
 import { SimpleStorageService } from './simple-storage-service';
 import { Api } from './api';
 
@@ -15,7 +15,10 @@ export class VideoService {
   channelData: any;
   data: any; //programe
 
-  constructor(public api: Api, public storage: Storage,
+  constructor(
+    public api: Api, 
+    public storage: Storage,
+    public settingService :SettingService,
     public simpleStorage: SimpleStorageService,) 
   {
     this.simpleStorage.getStoredState('tv-channel').then((_data) => {
@@ -47,6 +50,7 @@ export class VideoService {
       return Observable.of(this.channelData);
     } else { //需要从后台读取并缓存下来
       let seq = this.api.get('tv-programe/channels')
+      .timeout(this.settingService.networkTimeout)
       .map((_data: any) =>{
         return _data.json();
       }).share();
@@ -70,7 +74,9 @@ export class VideoService {
     if (this.data && !forceUpdate) { //直接从缓存数据读取
       return Observable.of(this.data);
     } else { //需要从后台读取并缓存下来
-      let seq = this.api.get('tv-programe/index').map((_data: any) =>{
+      let seq = this.api.get('tv-programe/index')
+      .timeout(this.settingService.networkTimeout)
+      .map((_data: any) =>{
         return _data.json();
       }).share();
 

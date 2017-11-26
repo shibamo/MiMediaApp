@@ -8,8 +8,6 @@ import {ResourceService} from '../../providers/resource-service';
 import {ForumThreadListComponent} from '../forum-thread-list/forum-thread-list';
 import {AdPositionPromotionComponent} from '../ad-position-promotion/ad-position-promotion';
 
-// declare var Wechat:any;
-
 @Component({
   selector: 'forum-board-list',
   templateUrl: 'forum-board-list.html'
@@ -31,28 +29,6 @@ export class ForumBoardListComponent {
   }
 
   public ionViewWillEnter() {
-    // Wechat.isInstalled(function (installed) {
-    //   Wechat.share({
-    //       message: {
-    //           title: "Hi, everyone",
-    //           description: "This is test.",
-    //           mediaTagName: "TEST-TAG-001",
-    //           media: {
-    //             thumb: "https://cordova.apache.org/images/cordova_256.png",
-    //             type: Wechat.Type.LINK,
-    //             url: "http://tech.qq.com/zt2012/tmtdecode/252.htm",
-    //             webpageUrl: "http://tech.qq.com/zt2012/tmtdecode/252.htm"
-    //           },
-    //       },
-    //       scene: Wechat.Scene.TIMELINE   // share to Timeline
-    //   }, function () {
-    //       alert("Share Success");
-    //   }, function (reason) {
-    //       alert("Share Failed: " + reason);
-    //   });
-    // }, function (reason) {
-    //     alert("Init Failed: " + reason);
-    // });
     this.adComponent.updateSlides();
   }
 

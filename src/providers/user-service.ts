@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/timeout';
 import { Storage } from '@ionic/storage';
 
 import { SimpleStorageService } from './simple-storage-service';

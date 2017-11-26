@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-// import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
-//import * as _ from 'lodash';
+import 'rxjs/add/operator/timeout';
 
 import { Storage } from '@ionic/storage';
 

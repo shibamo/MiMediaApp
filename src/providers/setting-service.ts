@@ -17,6 +17,7 @@ export class SettingService {
   tvProgrameWebviewPath = 'TvPrograme/webview/';
   forumThreadWebviewPath = 'Forum/webview/';
 
+  networkTimeout = 5000; //网络访问的过期出错时间
   constructor() 
   {  
   }
