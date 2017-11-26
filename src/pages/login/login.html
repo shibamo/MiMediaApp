@@ -18,25 +18,19 @@
 	</div>
 
 	<form #loginForm="ngForm" novalidate>
-		<ion-list no-lines>
+		<ion-list>
 			<ion-item>
-				<ion-label stacked color="primary">您的注册邮箱</ion-label>
-				<ion-input [(ngModel)]="login.email" name="email" type="text" #email="ngModel" spellcheck="false" autocapitalize="off"
+				<ion-label floating color="primary">您的注册邮箱</ion-label>
+				<ion-input [(ngModel)]="login.email" name="email" type="email" #email="ngModel" spellcheck="false" autocapitalize="off"
 					required>
 				</ion-input>
 			</ion-item>
-			<p ion-text [hidden]="email.valid || submitted == false" color="danger" padding-left>
-				请输入注册时使用的邮箱
-			</p>
 
 			<ion-item>
-				<ion-label stacked color="primary">输入密码</ion-label>
+				<ion-label floating color="primary">输入密码</ion-label>
 				<ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
 				</ion-input>
 			</ion-item>
-			<p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
-				请输入密码
-			</p>
 		</ion-list>
 
 		<ion-row responsive-sm>

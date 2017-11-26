@@ -18,6 +18,9 @@
       <p *ngFor="let _content of item.content.split('\n')">
         {{_content}}
       </p>
+      <button ion-button icon-only (tap)="share(item)" small>
+        <ion-icon ios="ios-share" md="md-share"></ion-icon>
+      </button>      
     </ion-card-content>
   </ion-card>
 </ion-content>

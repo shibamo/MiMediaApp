@@ -15,6 +15,7 @@ export class ResourceService {
   radioImageUrlPrefix : string = '/';
   boardImageUrlPrefix : string = '/';
   adImageUrlPrefix : string = '/';
+  generalWebviewUrlPrefix: string = '/';
 
   constructor(public api: Api, 
     public storage: Storage) {
@@ -56,6 +57,7 @@ export class ResourceService {
       this.radioImageUrlPrefix = res.radioImageUrlPrefix;
       this.boardImageUrlPrefix = res.boardImageUrlPrefix;
       this.adImageUrlPrefix = res.adImageUrlPrefix;
+      this.generalWebviewUrlPrefix = res.generalWebviewUrlPrefix;
 
       this.storage.set("resourceUrlPrefixes", JSON.stringify(res));
     }, err => {

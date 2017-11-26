@@ -16,8 +16,7 @@ import { ProfilePageComponent } from '../components/profile-page/profile-page';
 import { ForumBoardListComponent } from '../components/forum-board-list/forum-board-list';
 import { TVStationListComponent } from '../components/tv-station-list/tv-station-list';
 import { RadioProgrameListComponent } from '../components/radio-programe-list/radio-programe-list';
-//import { SettingComponent } from '../components/setting/setting';
-
+// import { SettingComponent } from '../components/setting/setting';
 
 export interface PageInterface {
   title: string;
@@ -50,13 +49,13 @@ export class MyApp {
     { title: '登录', name: 'LoginPage', component: LoginPage, icon: 'log-in' , isPage: false},
     { title: '注册', name: 'SignupPage', component: SignupPage, icon: 'person-add' , isPage: false},
     { title: '联系我们', name: 'AboutPage', component: AboutPage, index: 3, icon: 'information-circle' , isPage: false},    
-    //{ title: '设置', name: 'SettingPage', component: SettingComponent, icon: 'settings' , isPage: false},
+    // { title: '设置', name: 'SettingPage', component: SettingComponent, icon: 'settings' , isPage: false},
   ];
   
   loggedInPages: PageInterface[] = [
     { title: '个人资料', name: 'ProfilePageComponent', component: ProfilePageComponent, icon: 'person' , isPage: true},
     { title: '联系我们', name: 'AboutPage', component: AboutPage, index: 3, icon: 'information-circle' , isPage: false},    
-    //{ title: '设置', name: 'SettingPage', component: SettingComponent, icon: 'settings' , isPage: false},
+    // { title: '设置', name: 'SettingPage', component: SettingComponent, icon: 'settings' , isPage: false},
   ];
 
 
@@ -99,6 +98,13 @@ export class MyApp {
       });      
       
       this.splashScreen.hide();
+      
+      
+      // Wechat.isInstalled(function (installed) {
+      //   console.log("Wechat installed: " + (installed ? "Yes" : "No"));
+      // }, function (reason) {
+      //   console.log("Failed: " + reason);
+      // });
     });
   }
 

@@ -1,6 +1,6 @@
 {
   "name": "MiMediaApp",
-  "app_id": "",
+  "app_id": "com.dasianmedia.cp",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

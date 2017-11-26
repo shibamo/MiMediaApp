@@ -22,9 +22,6 @@ export class ForumThreadCreateComponent {
 
   sections: Array<{imageFileLink: any, beforeContent: string, afterContent: string}> = [];
 
-  //https://www.froala.com/wysiwyg-editor/docs/framework-plugins/angularjs-2-4
-  //public froalaEditorOptions: Object;
-
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,    
@@ -37,33 +34,6 @@ export class ForumThreadCreateComponent {
     public userService :UserService,        
     formBuilder: FormBuilder) 
   {
-    /*经测试FroalaEditor达不到使用效果,废除
-      this.froalaEditorOptions = {
-      placeholderText: '请输入主贴内容',
-      charCounterCount: false,
-      language: 'zh_cn',
-      height: 300,
-      //需要为每种size指定显示的按钮,否则会显示缺省的格式按钮
-      toolbarButtons: [ 'insertImage'], toolbarButtonsXS: [ 'insertImage'],
-      toolbarButtonsSM: [ 'insertImage'], toolbarButtonsMD: [ 'insertImage'],
-      // Set the image upload parameter.
-      imageUploadParam: 'image',
-      // Set the image upload URL.
-      imageUploadURL: settingService.uploadForumThreadImageUrl,
-      // Additional upload params.
-      imageUploadParams: {
-        uuid: UUID.UUID(), 
-      },
-      // Set request type.
-      imageUploadMethod: 'POST',
-      // Set max image size to 5MB.
-      imageMaxSize: 5 * 1024 * 1024,
-      // Allow to upload PNG and JPG.
-      imageAllowedTypes: ['jpeg', 'jpg', 'png'],
-      imageEditButtons: ['imageRemove'],
-      imageInsertButtons: ['imageUpload',]
-    };*/
-
     this.forumBoarditem = navParams.get('board');    
     // https://angular.io/guide/form-validation
     this.form = formBuilder.group({

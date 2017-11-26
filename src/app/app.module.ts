@@ -2,26 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicStorageModule } from '@ionic/storage';
 
+// cordova plugins
 import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
 import { Device } from '@ionic-native/device';
 import { Network } from '@ionic-native/network';
 import { SocialSharing } from '@ionic-native/social-sharing';
-
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
-import { TabsPage } from '../pages/tabs/tabs';
-import { AboutPage } from '../pages/about/about';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { IonicStorageModule } from '@ionic/storage';
-
+// services
 import { ResourceService } from '../providers/resource-service';
 import { AdSettingService } from '../providers/ad-setting-service';
 import { VideoService } from '../providers/video-service';
@@ -31,10 +24,18 @@ import { SettingService } from '../providers/setting-service';
 import { Api } from '../providers/api';
 import { UserData } from '../providers/user-data';
 import { UserService } from '../providers/user-service';
+import { UserLoginCheckServiceProvider } from '../providers/user-login-check-service';
 import { SimpleStorageService } from '../providers/simple-storage-service';
+import { TakePictureServiceProvider } from '../providers/take-picture-service';
+import { WechatShareServiceProvider } from '../providers/wechat-share-service';
 
-//import { FakeRadioStationDataProvider } from '../providers/fake-radio-station-data';
-
+// pages 
+import { MyApp } from './app.component';
+import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
+import { TabsPage } from '../pages/tabs/tabs';
+import { AboutPage } from '../pages/about/about';
 import { TVStationListComponent } from '../components/tv-station-list/tv-station-list';
 import { TVProgrameListComponent } from '../components/tv-programe-list/tv-programe-list';
 import { TVItemComponent } from '../components/tv-item/tv-item';
@@ -51,7 +52,10 @@ import { AdPositionPromotionComponent } from '../components/ad-position-promotio
 import { SettingComponent } from '../components/setting/setting';
 import { ChangePasswordComponent } from '../components/change-password/change-password';
 import { ForumThreadSectionCreateComponent } from '../components/forum-thread-section-create/forum-thread-section-create';
-import { TakePictureServiceProvider } from '../providers/take-picture-service';
+import { UserAgreementComponent } from '../components/user-agreement/user-agreement';
+import { ComplainThreadComponent } from '../components/complain-thread/complain-thread';
+import { ComplainThreadReplyComponent } from '../components/complain-thread-reply/complain-thread-reply';
+
 
 @NgModule({
   declarations: [
@@ -77,6 +81,9 @@ import { TakePictureServiceProvider } from '../providers/take-picture-service';
     SettingComponent,
     ChangePasswordComponent,
     ForumThreadSectionCreateComponent,
+    UserAgreementComponent,
+    ComplainThreadComponent,
+    ComplainThreadReplyComponent,
   ],
   imports: [
     BrowserModule,
@@ -114,6 +121,9 @@ import { TakePictureServiceProvider } from '../providers/take-picture-service';
     AdPositionPromotionComponent,
     SettingComponent,
     ChangePasswordComponent,
+    UserAgreementComponent,
+    ComplainThreadComponent,
+    ComplainThreadReplyComponent,
   ],
   providers: [
     Camera,
@@ -129,14 +139,15 @@ import { TakePictureServiceProvider } from '../providers/take-picture-service';
     ResourceService,
     AdSettingService,
     Api,
-    UserData,
+    UserData, 
     UserService,
     VideoService,
     RadioService,
     ForumService,
     SimpleStorageService,
-    //FakeRadioStationDataProvider,
-    TakePictureServiceProvider
+    TakePictureServiceProvider,
+    WechatShareServiceProvider,
+    UserLoginCheckServiceProvider
   ]
 })
 export class AppModule {}

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (tap)="cancel()">
+        <span color="primary">
+          取消
+        </span>
+      </button>
+    </ion-buttons>
+
+    <ion-title>投诉帖子内容</ion-title>
+
+    <ion-buttons end>
+      <button ion-button (tap)="done()" [disabled]="!isReadyToSave" strong>
+        <span color="primary">
+          完成
+        </span>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form *ngIf="form" [formGroup]="form">
+    <ion-list>
+      <ion-item>
+        <ion-textarea rows="8" placeholder="请输入您投诉该贴的理由" formControlName="complainContent"></ion-textarea>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
+

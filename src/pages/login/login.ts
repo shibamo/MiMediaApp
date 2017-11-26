@@ -34,7 +34,7 @@ export class LoginPage {
           position: 'middle'
         });  
         toast.present();
-        this.viewCtrl.dismiss();
+        this.viewCtrl.dismiss(true);
         //this.navCtrl.push(TabsPage);
       }, (err) => {
         // Unable to login
@@ -45,7 +45,7 @@ export class LoginPage {
           position: 'middle'
         });
         toast.present();
-      });      
+      });
     }
   }
 
@@ -54,6 +54,6 @@ export class LoginPage {
   }
 
   cancel() {
-    this.viewCtrl.dismiss();
-  }  
+    this.viewCtrl.dismiss(false);
+  }
 }

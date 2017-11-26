@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button> -->
     <ion-buttons start>
-      <button ion-button (click)="cancel()">
+      <button ion-button (tap)="cancel()">
         <span color="primary" showWhen="ios">
           取消
         </span>
@@ -15,7 +15,7 @@
     <ion-title>发新帖</ion-title>
 
     <ion-buttons end>
-      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>
+      <button ion-button (tap)="done()" [disabled]="!isReadyToSave" strong>
         <span color="primary" showWhen="ios">
           完成
         </span>
@@ -46,13 +46,13 @@
         </p>
         <div text-center>
           <button ion-button color="danger" outline round
-          (click)='deleteSection(i)'>删除图文段</button>
+          (tap)='deleteSection(i)'>删除图文段</button>
         </div>
       </ion-item>
 
       <div *ngIf="sections.length < 5" text-center>
         <button ion-button color="secondary" outline round
-        (click)='addSection()'>增加图文段</button>
+        (tap)='addSection()'>增加图文段</button>
       </div>
     </ion-list>
   </form>

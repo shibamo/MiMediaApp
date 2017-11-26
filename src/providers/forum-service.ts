@@ -87,6 +87,40 @@ export class ForumService {
     return seq;
   }
 
+  complainMain(complain: any){
+    let seq = this.api.post('forum-thread/complainThread', complain,
+      this.userService.buildAuthenticationOptions()).share();
+
+    seq.map(res => res.json())
+      .subscribe(res => {
+        console.log(res);
+        if (res.status == 'success') {
+        } else {
+        }
+      }, err => {
+        console.error('ERROR', err);
+      });
+
+    return seq;
+  }
+
+  complainReply(complain: any){
+    let seq = this.api.post('forum-thread/complainReply', complain,
+      this.userService.buildAuthenticationOptions()).share();
+
+    seq.map(res => res.json())
+      .subscribe(res => {
+        console.log(res);
+        if (res.status == 'success') {
+        } else {
+        }
+      }, err => {
+        console.error('ERROR', err);
+      });
+
+    return seq;
+  }
+
   uploadThreadImage(caller: any, imageFilePath: string, okHandler: any, failHandler: any, payload?: any){
     this.file.resolveLocalFilesystemUrl(imageFilePath) 
     .then(entry => (<FileEntry>entry).file(

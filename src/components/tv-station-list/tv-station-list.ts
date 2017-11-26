@@ -1,8 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Refresher, ToastController,NavController } from 'ionic-angular';
 
-import { Observable } from 'rxjs/Observable';
-
 import { VideoService } from '../../providers/video-service';
 import {ResourceService} from '../../providers/resource-service';
 

@@ -1,22 +1,26 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { NavController, ToastController,ViewController } from 'ionic-angular';
+import { NavController, ToastController, 
+  ViewController, ModalController } from 'ionic-angular';
 
 import { UserData } from '../../providers/user-data';
 import { UserService } from '../../providers/user-service';
+
+import { UserAgreementComponent } from '../../components/user-agreement/user-agreement';
 
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html'
 })
 export class SignupPage {
-  signup: {email?: string, name?: string, password?: string} = {};
+  signup: {email?: string, name?: string, password?: string, agreeUserAgreement?: boolean} = {};
   submitted = false;
 
   constructor(public navCtrl: NavController,
     public viewCtrl: ViewController,
     public toastCtrl: ToastController,
+    public modalController: ModalController,
     public userData: UserData,
     public userService: UserService) {}
 
@@ -48,6 +52,10 @@ export class SignupPage {
     this.viewCtrl.dismiss();
   }
   
+  presentUserAgreement(myEvent) {
+    this.modalController.create(UserAgreementComponent).present();
+  }
+
   isEmailValid(){
     return this.signup.email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
   }

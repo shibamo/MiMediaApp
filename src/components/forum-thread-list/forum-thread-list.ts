@@ -50,7 +50,8 @@ export class ForumThreadListComponent {
 
   gotoThread(item){
     this.navCtrl.push(ForumThreadItemComponent, {
-      item: item
+      item: item,
+      board: this.board
     });
   }
 

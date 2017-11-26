@@ -5,7 +5,10 @@
     </button>
     <ion-title>{{item.name}}</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="addReply()">
+      <button ion-button icon-only (tap)="share(item)" small>
+        <ion-icon ios="ios-share" md="md-share"></ion-icon>
+      </button>
+      <button ion-button icon-only (tap)="addReply()">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>     
@@ -25,6 +28,27 @@
     <ion-card-content>
       <div [innerHTML]="item.content"></div>
     </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>0 赞</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="thumbs-down"></ion-icon>
+          <div>0 踩</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small (tap)="complainMain()">
+          <ion-icon name="sad"></ion-icon>
+          <div>投诉</div>
+        </button>
+      </ion-col>
+    </ion-row>
   </ion-card>
 
   <ion-card *ngFor="let reply of item.replies">
@@ -40,10 +64,31 @@
         {{_content}}
       </p>
     </ion-card-content>
+    
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>0 赞</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="thumbs-down"></ion-icon>
+          <div>0 踩</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small (tap)="complainReply(reply)">
+          <ion-icon name="sad"></ion-icon>
+          <div>投诉</div>
+        </button>
+      </ion-col>
+    </ion-row>
   </ion-card>
 
   <ion-fab right bottom>
-    <button ion-fab color="primary" mini (click)="addReply()">
+    <button ion-fab color="primary" mini (tap)="addReply()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>

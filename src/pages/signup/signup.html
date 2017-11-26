@@ -47,10 +47,20 @@
 			<p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
 				请输入密码(至少6个字符)
 			</p>
+
+			<ion-item>
+				<ion-label stacked color="primary" style="margin-top: 4px;">
+					<button ion-button color="secondary" round small
+					(click)='presentUserAgreement($event)'>同意用户协议? &nbsp;查看 &nbsp;
+					<ion-icon name="eye"> </ion-icon></button>
+				</ion-label>
+				<ion-toggle [(ngModel)]="signup.agreeUserAgreement" name="agreeUserAgreement" #name="ngModel"></ion-toggle>
+			</ion-item>
+			
 		</ion-list>
 
 		<div padding>
-			<button ion-button (click)="onSignup(signupForm)" type="submit" block>创建账户</button>
+			<button ion-button [disabled]="!signup.agreeUserAgreement"  (tap)="onSignup(signupForm)" type="submit" block>创建账户</button>
 		</div>
 	</form>
 
