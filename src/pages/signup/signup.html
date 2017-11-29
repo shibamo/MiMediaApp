@@ -23,7 +23,7 @@
 
 			<ion-item>
 				<ion-label stacked color="primary">您的论坛用户名(可以是中文) *</ion-label>
-				<ion-input [(ngModel)]="signup.name" name="name" type="text" #name="ngModel" required>
+				<ion-input [(ngModel)]="signup.name" name="name" type="text" #name="ngModel" minlength="1" required>
 				</ion-input>
 			</ion-item>
 			<p ion-text [hidden]="name.valid || submitted == false" color="danger" padding-left>
@@ -31,7 +31,7 @@
 			</p>
 
 			<ion-item>
-				<ion-label stacked color="primary">您的Email邮箱 *</ion-label>
+				<ion-label stacked color="primary">您的有效Email邮箱 *</ion-label>
 				<ion-input [(ngModel)]="signup.email" name="email" type="email" #email="ngModel" required>
 				</ion-input>
 			</ion-item>
@@ -40,7 +40,7 @@
 			</p>
 
 			<ion-item>
-				<ion-label stacked color="primary">输入密码 *</ion-label>
+				<ion-label stacked color="primary">输入密码(至少6个字符) *</ion-label>
 				<ion-input [(ngModel)]="signup.password" name="password" type="password" #password="ngModel" minlength="6" required>
 				</ion-input>
 			</ion-item>
@@ -51,7 +51,7 @@
 			<ion-item>
 				<ion-label stacked color="primary" style="margin-top: 4px;">
 					<button ion-button color="secondary" round small
-					(click)='presentUserAgreement($event)'>同意用户协议? &nbsp;查看 &nbsp;
+					(tap)='presentUserAgreement($event)'>同意用户协议? &nbsp;查看 &nbsp;
 					<ion-icon name="eye"> </ion-icon></button>
 				</ion-label>
 				<ion-toggle [(ngModel)]="signup.agreeUserAgreement" name="agreeUserAgreement" #name="ngModel"></ion-toggle>
@@ -60,7 +60,7 @@
 		</ion-list>
 
 		<div padding>
-			<button ion-button [disabled]="!signup.agreeUserAgreement"  (tap)="onSignup(signupForm)" type="submit" block>创建账户</button>
+			<button ion-button [disabled]="!isValid()"  (tap)="onSignup(signupForm)" type="submit" block>创建账户</button>
 		</div>
 	</form>
 

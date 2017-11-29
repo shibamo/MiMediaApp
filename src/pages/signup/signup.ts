@@ -57,6 +57,25 @@ export class SignupPage {
   }
 
   isEmailValid(){
-    return this.signup.email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    
+    return this.signup.email && 
+      (!!this.signup.email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/));
+  }
+
+  isPasswordValid(){
+    return this.signup.password && this.signup.password.length>=6;
+  }
+
+  isUserNameValid(){
+    return this.signup.name && this.signup.name.length>=1;
+  }
+
+  isValid() : boolean
+  {
+    // this.signup.agreeUserAgreement || !isEmailValid() || !password.valid || !name.valid || !name
+    return this.signup.agreeUserAgreement && 
+      this.isEmailValid() && 
+      this.isPasswordValid() &&
+      this.isUserNameValid();
   }
 }
