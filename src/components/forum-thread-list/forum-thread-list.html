@@ -22,8 +22,8 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-list [virtualScroll]="items" approxItemHeight="90px">
-    <button ion-item *virtualItem="let item" (tap)="gotoThread(item)">
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (tap)="gotoThread(item)">
       <ion-avatar item-start>
         <img [src]="resourceService.avatarImageUrlPrefix + item.avatar">
       </ion-avatar>
@@ -39,4 +39,11 @@
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
+
+  <ion-infinite-scroll (ionInfinite)="loadNextPageData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="加载更多数据...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

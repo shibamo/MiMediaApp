@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController,NavParams, ModalController,ToastController,Refresher } from 'ionic-angular';
+import { Component} from '@angular/core';
+import { NavController,NavParams, ModalController,
+  ToastController, Refresher} from 'ionic-angular';
 
 import {ForumService} from '../../providers/forum-service';
 import {ResourceService} from '../../providers/resource-service';
@@ -14,8 +15,12 @@ import {LoginPage} from '../../pages/login/login';
   templateUrl: 'forum-thread-list.html'
 })
 export class ForumThreadListComponent {
+  // @ViewChild(InfiniteScroll)
+  // private _infiniteScroll:InfiniteScroll;
+
   board: any;
   items: Array<any> = [];
+  currentPage: number = 1;
 
   constructor(public navCtrl: NavController,
     public toastCtrl: ToastController, 
@@ -27,13 +32,18 @@ export class ForumThreadListComponent {
   ) {
     // 导航到本页时需要传入论坛对象
     this.board = navParams.get('item');
-    this.updateList();
+    //this.updateList(null);
+  }
+
+  public ionViewDidEnter() {
+    this.updateList(null);
   }
 
   updateList(refresher?: Refresher) {
-    this.forumService.getThreadsData(this.board.id, refresher ? true : false).
+    this.forumService.getThreadsData
+    (this.board.id, 1, refresher ? true : false).
     subscribe(
-      (data: any) => {
+      (data: Array<any>) => {
         this.items = data;
         refresher && refresher.complete();
       },
@@ -42,10 +52,56 @@ export class ForumThreadListComponent {
         refresher && this.toastCtrl.create({
           message: '获取数据出错,请检查您的网络连接情况.' + _error,
           position: 'middle',
-          duration: 10000
+          duration: 5000
         }).present();
       }      
-  );
+    );
+  }
+
+  loadNextPageData(infiniteScroll){
+    
+    this.forumService.getThreadsData
+    (this.board.id, this.currentPage + 1, true).
+    subscribe(
+      (data: Array<any>) => {
+
+        if(data.length>0){
+          //console.log(this.currentPage + 1, data);
+          this.currentPage++;
+
+          // Refresh already loaded items
+          for(let i=0; i<this.items.length; i++){
+            let idx = data.findIndex((item)=>item.id == this.items[i].id);
+            if(idx!=-1){
+              this.items[i] = data[idx];
+              data.splice(idx, 1);
+            }
+          }
+
+          // Append newly retrieved items
+          if(data.length>0){
+            this.items.push(...data);
+          }
+        } else{
+          this.toastCtrl.create({
+            message: '已无更多数据',
+            position: 'middle',
+            duration: 2000
+          }).present();
+        }
+
+        infiniteScroll.complete();
+      },
+      (_error: any) =>{
+        this.toastCtrl.create({
+          message: '获取数据出错,请检查您的网络连接情况.' + _error,
+          position: 'middle',
+          duration: 5000
+        }).present();
+        infiniteScroll.complete();
+      }
+    );
+
   }
 
   gotoThread(item){

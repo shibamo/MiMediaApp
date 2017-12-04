@@ -25,16 +25,16 @@ export class ForumService {
     private userService :UserService)  {
   }
 
-  private load(forumBoardId :number, forceUpdate: boolean = false): any {
-    return this.api.get('forum-thread/index/' + forumBoardId); 
+  private load(forumBoardId :number, page :number, forceUpdate: boolean = false): any {
+    return this.api.get('forum-thread/index/' + forumBoardId + '/' + page); 
   }
 
-  getThreadsData(forumBoardId :number, forceUpdate?: boolean){
+  getThreadsData(forumBoardId :number, page :number, forceUpdate?: boolean){
     if (this.threadsData[forumBoardId.toString()] && !forceUpdate) {
-      //直接从会话级缓存数据读取 
+      // 已有该论坛数据且不强制刷新, 则直接从会话级缓存数据读取 
       return Observable.of(this.threadsData[forumBoardId.toString()]);
     } else {
-      return this.load(forumBoardId).map(data=>data.json()).map((data: any) => {
+      return this.load(forumBoardId, page).map(data=>data.json()).map((data: any) => {
         this.threadsData[forumBoardId.toString()] = data;
         return data;
       });
