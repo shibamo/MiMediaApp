@@ -5,7 +5,7 @@ export class SettingService {
   //http://homestead.app/
   //http://192.168.100.107:8000/
   //http://192.168.0.34:8000/
-  defaultHost: string = 'http://dasianmediatest.us-east-2.elasticbeanstalk.com/';
+  defaultHost: string = 'https://test1.mtest.dchineseradio.com/';
   //defaultHost: string = 'http://homestead.app/';
   serverResourceBasePath: string = this.defaultHost; 
   apiUrlPath: string = this.defaultHost + 'api';
