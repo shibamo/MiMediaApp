@@ -14,7 +14,14 @@ import { UserAgreementComponent } from '../../components/user-agreement/user-agr
   templateUrl: 'signup.html'
 })
 export class SignupPage {
-  signup: {email?: string, name?: string, password?: string, agreeUserAgreement?: boolean} = {};
+  signup: {
+    email?: string, 
+    name?: string, 
+    password?: string, 
+    question?: string, 
+    answer?: string, 
+    agreeUserAgreement?: boolean
+  } = {};
   submitted = false;
 
   constructor(public navCtrl: NavController,
@@ -68,6 +75,10 @@ export class SignupPage {
 
   isUserNameValid(){
     return this.signup.name && this.signup.name.length>=1;
+  }
+
+  isQuestionNAnswerValid(){
+    return this.signup.question && this.signup.answer && this.signup.answer.length>=1;
   }
 
   isValid() : boolean
