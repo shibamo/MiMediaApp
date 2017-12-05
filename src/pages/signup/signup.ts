@@ -87,6 +87,7 @@ export class SignupPage {
     return this.signup.agreeUserAgreement && 
       this.isEmailValid() && 
       this.isPasswordValid() &&
-      this.isUserNameValid();
+      this.isUserNameValid() && 
+      this.isQuestionNAnswerValid();
   }
 }
