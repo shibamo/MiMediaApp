@@ -7,7 +7,7 @@ import { UserData } from '../../providers/user-data';
 import { UserService } from '../../providers/user-service';
 
 import { SignupPage } from '../signup/signup';
-
+import { ResetPasswordComponent } from '../../components/reset-password/reset-password';
 
 @Component({
   selector: 'page-login',
@@ -53,7 +53,18 @@ export class LoginPage {
     this.navCtrl.push(SignupPage);
   }
 
+  onResetPassword(){
+    this.navCtrl.push(ResetPasswordComponent);
+  }
+
   cancel() {
     this.viewCtrl.dismiss(false);
+  }
+
+  //如果是从注册用户或重置密码退回,需要判断是否已经是已成功登陆的用户
+  ionViewDidEnter(){ 
+    if(this.userService.isCurrentUserValid()){
+      this.viewCtrl.dismiss(true);
+    }
   }
 }

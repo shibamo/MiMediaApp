@@ -37,10 +37,16 @@
 			<ion-col>
 				<button ion-button (click)="onLogin(loginForm)" type="submit" block>登录</button>
 			</ion-col>
-			<ion-col>
-				<button ion-button (click)="onSignup()" color="light" block>注册</button>
-			</ion-col>
 		</ion-row>
+
+		<ion-row responsive-sm>
+				<ion-col>
+					<button ion-button (click)="onSignup()" color="secondary" block>注册</button>
+				</ion-col>
+				<ion-col>
+					<button ion-button (click)="onResetPassword()" color="light" block>重置密码</button>
+				</ion-col>			
+			</ion-row>		
 	</form>
 
 </ion-content>

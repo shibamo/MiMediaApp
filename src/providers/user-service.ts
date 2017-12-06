@@ -107,6 +107,39 @@ export class UserService {
     return seq;
   }
 
+  public getQuestionFromEmail(email: string){
+    let seq = this.api.post('user/getQuestionFromEmail', { email: email, }).share();
+
+    seq.map(resp => resp.json()).subscribe(
+      resp => {
+        console.log(resp);
+      }, 
+      err => {
+        console.error('ERROR', err);
+      }
+    );
+
+    return seq;   
+  }
+
+  public resetPassword(email: string, answer: string, newPassword: string){
+    let seq = this.api.post('user/resetPassword', 
+      { email: email, answer: answer, newPassword: newPassword}).share();
+
+    seq.map(resp => resp.json())
+    .subscribe(resp => {
+      if (resp.status == 'success') {
+        this._setLoggedInData(resp);
+      } else {
+        console.error('ERROR', resp);
+      }
+    }, err => {
+      console.error('ERROR', err);
+    });
+
+    return seq;   
+  }
+
   public setAvatar(imageFileDataRaw: any){ // 因为此方式容易导致android客户端app闪退, 暂时放弃
     let seq = this.api.post('user/setAvatar',
       { image: imageFileDataRaw},
@@ -143,6 +176,11 @@ export class UserService {
     let options = new RequestOptions({ headers: headers });
 
     return options;
+  }
+
+  public isEmailValid(email: string): boolean{
+    return email && 
+    (!!email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/));
   }
 
   private readAvatarFileAndUpload(caller: any, file: any, okHandler: any, failHandler: any) {

@@ -5,8 +5,8 @@ export class SettingService {
   //http://homestead.app/
   //http://192.168.100.107:8000/
   //http://192.168.0.34:8000/
-  defaultHost: string = 'https://test1.mtest.dchineseradio.com/';
-  //defaultHost: string = 'http://homestead.app/';
+  //defaultHost: string = 'https://test1.mtest.dchineseradio.com/';
+  defaultHost: string = 'http://homestead.app/';
   serverResourceBasePath: string = this.defaultHost; 
   apiUrlPath: string = this.defaultHost + 'api';
   apiSecretUrl: string = this.defaultHost + 'api'; //一般用于操作数据型

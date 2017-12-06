@@ -55,6 +55,7 @@ import { ForumThreadSectionCreateComponent } from '../components/forum-thread-se
 import { UserAgreementComponent } from '../components/user-agreement/user-agreement';
 import { ComplainThreadComponent } from '../components/complain-thread/complain-thread';
 import { ComplainThreadReplyComponent } from '../components/complain-thread-reply/complain-thread-reply';
+import { ResetPasswordComponent } from '../components/reset-password/reset-password';
 
 
 @NgModule({
@@ -84,6 +85,7 @@ import { ComplainThreadReplyComponent } from '../components/complain-thread-repl
     UserAgreementComponent,
     ComplainThreadComponent,
     ComplainThreadReplyComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -124,6 +126,7 @@ import { ComplainThreadReplyComponent } from '../components/complain-thread-repl
     UserAgreementComponent,
     ComplainThreadComponent,
     ComplainThreadReplyComponent,
+    ResetPasswordComponent,
   ],
   providers: [
     Camera,
