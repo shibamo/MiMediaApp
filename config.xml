@@ -110,4 +110,10 @@
     <plugin name="cordova-plugin-wechat" spec="^2.0.0">
         <variable name="WECHATAPPID" value="wx83e25e00f9ca01c0" />
     </plugin>
+    <plugin name="cordova-plugin-inappbrowser" spec="^1.7.2" />
+    <plugin name="cordova-plugin-geolocation" spec="^2.4.3">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="需要读取您的位置以提供服务" />
+    </plugin>
+    <plugin name="cordova-plugin-safariviewcontroller" spec="^1.5.2" />
+    <plugin name="cordova-plugin-globalization" spec="^1.0.8" />
 </widget>

@@ -5,7 +5,7 @@
 <ion-toolbar style='padding: 0px; background-color: white;'>
   <ion-slides *ngIf="adList.length" autoplay='2000' loop=true pager=true parallax=true speed=1000>
     <ion-slide *ngFor="let item of adList">
-      <img [src]='basePath + item.imageUrl'>
+      <img [src]='basePath + item.imageUrl' (click)="adImageClicked(item)">
     </ion-slide>
   </ion-slides>
 </ion-toolbar>

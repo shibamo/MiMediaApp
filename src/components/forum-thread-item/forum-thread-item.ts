@@ -9,6 +9,7 @@ import {SettingService} from '../../providers/setting-service';
 import {ResourceService} from '../../providers/resource-service';
 import {UserLoginCheckServiceProvider} from '../../providers/user-login-check-service';
 import {WechatShareServiceProvider, ShareSceneType} from '../../providers/wechat-share-service';
+import {ContentVisitServiceProvider} from '../../providers/content-visit-service';
 
 @Component({
   selector: 'forum-thread-item',
@@ -27,10 +28,12 @@ export class ForumThreadItemComponent {
     public resourceService :ResourceService,        
     public userLoginCheckService :UserLoginCheckServiceProvider,
     public wechatShareService: WechatShareServiceProvider,
+    public contentVisitService: ContentVisitServiceProvider,
   ) {
     // 导航到本页时需要传入指定论坛的thread信息项
     this.item = navParams.get('item');
     this.board = navParams.get('board');
+    contentVisitService.sendForumVisit(this.item.id);
   }
 
   // 回贴

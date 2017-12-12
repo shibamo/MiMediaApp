@@ -3,10 +3,16 @@ import { Nav, Platform, ModalController, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Network } from '@ionic-native/network';
+import { Geolocation } from '@ionic-native/geolocation';
+import { Device} from '@ionic-native/device';
+import { Globalization } from '@ionic-native/globalization';
+
+import { TranslateService } from '@ngx-translate/core';
 
 import { ResourceService } from '../providers/resource-service';
 import { UserService } from '../providers/user-service';
 import { VideoService } from '../providers/video-service';
+import { ContentVisitServiceProvider } from '../providers/content-visit-service';
 
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
@@ -40,66 +46,86 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   appPages: PageInterface[] = [
-    { title: '电视', name: 'TabsPage', component: TabsPage, tabComponent: TVStationListComponent, index: 0, icon: 'videocam', highlight: true, isPage: true },
-    { title: '电台', name: 'TabsPage', component: TabsPage, tabComponent: RadioProgrameListComponent, index:1, icon: 'radio', highlight: true , isPage: true},    
-    { title: '交流', name: 'TabsPage', component: TabsPage, tabComponent: ForumBoardListComponent, index: 2, icon: 'contacts', highlight: true , isPage: true},
+    { title: "VIDEO", name: 'TabsPage', component: TabsPage, tabComponent: TVStationListComponent, index: 0, icon: 'videocam', highlight: true, isPage: true },
+    { title: 'RADIO', name: 'TabsPage', component: TabsPage, tabComponent: RadioProgrameListComponent, index:1, icon: 'radio', highlight: true , isPage: true},    
+    { title: 'FORUM', name: 'TabsPage', component: TabsPage, tabComponent: ForumBoardListComponent, index: 2, icon: 'contacts', highlight: true , isPage: true},
   ];
 
   loggedOutPages: PageInterface[] = [
-    { title: '登录', name: 'LoginPage', component: LoginPage, icon: 'log-in' , isPage: false},
-    { title: '注册', name: 'SignupPage', component: SignupPage, icon: 'person-add' , isPage: false},
-    { title: '联系我们', name: 'AboutPage', component: AboutPage, index: 3, icon: 'information-circle' , isPage: false},    
+    { title: 'LOGIN', name: 'LoginPage', component: LoginPage, icon: 'log-in' , isPage: false},
+    { title: 'REGISTER', name: 'SignupPage', component: SignupPage, icon: 'person-add' , isPage: false},
+    { title: 'ABOUT', name: 'AboutPage', component: AboutPage, index: 3, icon: 'information-circle' , isPage: false},    
     // { title: '设置', name: 'SettingPage', component: SettingComponent, icon: 'settings' , isPage: false},
   ];
   
   loggedInPages: PageInterface[] = [
-    { title: '个人资料', name: 'ProfilePageComponent', component: ProfilePageComponent, icon: 'person' , isPage: true},
-    { title: '联系我们', name: 'AboutPage', component: AboutPage, index: 3, icon: 'information-circle' , isPage: false},    
+    { title: 'PROFILE', name: 'ProfilePageComponent', component: ProfilePageComponent, icon: 'person' , isPage: true},
+    { title: 'ABOUT', name: 'AboutPage', component: AboutPage, index: 3, icon: 'information-circle' , isPage: false},    
     // { title: '设置', name: 'SettingPage', component: SettingComponent, icon: 'settings' , isPage: false},
   ];
 
+  translator: TranslateService;
 
   rootPage: any = TabsPage;
 
-  constructor(public platform: Platform, 
+  constructor(
+    public platform: Platform, 
     public modalCtrl: ModalController,
     public toastCtrl: ToastController,
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen, 
-    public network: Network,  
+    public network: Network,
+    public device: Device,
+    public geolocation: Geolocation,
+    public globalization: Globalization,
+
+    public translate: TranslateService,
+
     public userService: UserService, 
     public resourceService: ResourceService,
-    public videoService :VideoService,) {
+    public videoService :VideoService,
+    public visitService :ContentVisitServiceProvider,
+  ) {
     this.initializeApp();
+
+    this.translator = translate;
 
     this.resourceService.loadResourceUrlPrefixes();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+
       this.statusBar.styleDefault();
-      
-      this.network.onDisconnect().subscribe(() => {
-        this.toastCtrl.create({
-          message: '网络不给力, 完整功能需要保持网络连接 :-(',
-          duration: 5000,
-          position: 'middle',
-        }).present(); 
-      });
-      
-      this.network.onConnect().subscribe(() => {
-        this.toastCtrl.create({
-          message: '网络已重新连接 :-)',
-          position: 'middle',
-          duration: 2000
-        }).present();
-      });      
-      
+
       this.splashScreen.hide();
       
+      this.visitService.deviceUUID = this.device.uuid;
+      this.visitService.model = this.device.model;
+      this.visitService.platform = this.device.platform;
+      this.visitService.version = this.device.version;
+
+      this.geolocation.getCurrentPosition().then((resp) => {
+        this.visitService.latitude = resp.coords.latitude;
+        this.visitService.longitude = resp.coords.longitude;
+       }).catch((error) => {
+       });
       
+      this.translate.setDefaultLang('en');
+      
+      this.globalization.getLocaleName()  //en: English, zh: Chinese
+      .then(locale => {
+        if(locale.value.toUpperCase().startsWith('ZH')) {
+          this.translator.setDefaultLang('cn');
+        }
+        this.setNetWorkStatusChangeNotification();
+      })
+      .catch(e => {
+        console.log(e);
+        this.setNetWorkStatusChangeNotification();
+      })
+      ;
+      // 检验微信安装
       // Wechat.isInstalled(function (installed) {
       //   console.log("Wechat installed: " + (installed ? "Yes" : "No"));
       // }, function (reason) {
@@ -143,6 +169,24 @@ export class MyApp {
     })
     diaglogModal.present();
     return;
+  }
+
+  setNetWorkStatusChangeNotification(){
+    this.network.onDisconnect().subscribe(() => {
+      this.toastCtrl.create({
+        message:  this.translator.instant("NETWORK_DISCONNECTED"),
+        duration: 2000,
+        position: 'middle',
+      }).present(); 
+    });
+    
+    this.network.onConnect().subscribe(() => {
+      this.toastCtrl.create({
+        message: this.translator.instant("NETWORK_RECONNECTED"),
+        position: 'middle',
+        duration: 1000
+      }).present();
+    });  
   }
 
   isActive(page: PageInterface) {

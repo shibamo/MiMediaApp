@@ -4,6 +4,7 @@ import { NavParams, ActionSheetController } from 'ionic-angular';
 import {SettingService} from '../../providers/setting-service';
 import {ResourceService} from '../../providers/resource-service';
 import {WechatShareServiceProvider, ShareSceneType} from '../../providers/wechat-share-service';
+import {ContentVisitServiceProvider} from '../../providers/content-visit-service';
 
 /**
  * 用于显示音频节目的信息并提供播放音频的功能
@@ -19,9 +20,11 @@ export class RadioItemComponent {
     public actionSheetService : ActionSheetController,
     public settingService :SettingService,
     public resourceService :ResourceService, 
-    public wechatShareService: WechatShareServiceProvider) {
+    public wechatShareService: WechatShareServiceProvider,
+    public contentVisitService: ContentVisitServiceProvider) {
     // 导航到本页时需要传入音频节目信息项
     this.item = navParams.get('item');
+    contentVisitService.sendRadioVisit(this.item.id);
   }
 
   public share(item){

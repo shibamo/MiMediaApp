@@ -11,18 +11,18 @@
   <ion-content>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of appPages" (click)="p.isPage ? openPage(p) : openDialog(p)">
-        <ion-icon [name]="p.icon" color="{{p.highlight ? 'primary' : 'secondary'}}"></ion-icon> {{p.title}}
+        <ion-icon [name]="p.icon" color="{{p.highlight ? 'primary' : 'secondary'}}"></ion-icon> {{p.title | translate}}
       </button>
 
       <ng-container *ngIf="!userService._user">
         <button menuClose ion-item *ngFor="let p of loggedOutPages" (click)="p.isPage ? openPage(p) : openDialog(p)">
-          <ion-icon [name]="p.icon" color="{{p.highlight ? 'primary' : 'secondary'}}"></ion-icon> {{p.title}}
+          <ion-icon [name]="p.icon" color="{{p.highlight ? 'primary' : 'secondary'}}"></ion-icon> {{p.title | translate}}
         </button>
       </ng-container>
 
       <ng-container *ngIf="userService._user">
         <button menuClose ion-item *ngFor="let p of loggedInPages" (click)="p.isPage ? openPage(p) : openDialog(p)">
-          <ion-icon [name]="p.icon" color="{{p.highlight ? 'primary' : 'secondary'}}"></ion-icon> {{p.title}}
+          <ion-icon [name]="p.icon" color="{{p.highlight ? 'primary' : 'secondary'}}"></ion-icon> {{p.title | translate}}
         </button>
       </ng-container>
 

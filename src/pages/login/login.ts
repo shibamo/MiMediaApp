@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import { NavController, ToastController, ViewController } from 'ionic-angular';
 
 import { UserData } from '../../providers/user-data';
@@ -18,8 +20,9 @@ export class LoginPage {
   submitted = false;
 
   constructor(public navCtrl: NavController, 
-    public viewCtrl: ViewController,    
+    public viewCtrl: ViewController,
     public toastCtrl: ToastController,
+    public translateService: TranslateService,
     public userData: UserData,
     public userService: UserService) { }
 

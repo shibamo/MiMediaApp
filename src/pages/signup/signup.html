@@ -3,12 +3,12 @@
 		<ion-buttons start>
 			<button ion-button (click)="cancel()">
 				<span color="primary" showWhen="ios">
-					取消
+					{{'CANCEL' | translate}}
 				</span>
 				<ion-icon name="md-close" showWhen="android,windows"></ion-icon>
 			</button>
 		</ion-buttons>
-		<ion-title>注册新用户</ion-title>
+		<ion-title>{{'REGISTER' | translate}}</ion-title>
 	</ion-navbar>
 </ion-header>
 
@@ -22,35 +22,35 @@
 		<ion-list no-lines>
 
 			<ion-item>
-				<ion-label stacked color="primary">您的论坛用户名(可以是中文) *</ion-label>
+				<ion-label stacked color="primary">{{'USERNAME' | translate}} *</ion-label>
 				<ion-input [(ngModel)]="signup.name" name="name" type="text" #name="ngModel" minlength="1" required>
 				</ion-input>
 			</ion-item>
 			<p ion-text [hidden]="name.valid || submitted == false" color="danger" padding-left>
-				请输入您的用户名
+				{{'INPUT_USERNAME' | translate}}
 			</p>
 
 			<ion-item>
-				<ion-label stacked color="primary">您的有效Email邮箱 *</ion-label>
+				<ion-label stacked color="primary">{{'EMAIL' | translate}} *</ion-label>
 				<ion-input [(ngModel)]="signup.email" name="email" type="email" #email="ngModel" required>
 				</ion-input>
 			</ion-item>
 			<p ion-text [hidden]="submitted == false || isEmailValid()" color="danger" padding-left>
-				请输入您的有效Email邮箱账户
+				{{'EMAIL' | translate}}
 			</p>
 
 			<ion-item>
-				<ion-label stacked color="primary">输入密码(至少6个字符) *</ion-label>
+				<ion-label stacked color="primary">{{'INPUT_CORRECT_PASSWORD' | translate}} *</ion-label>
 				<ion-input [(ngModel)]="signup.password" name="password" type="password" #password="ngModel" minlength="6" required>
 				</ion-input>
 			</ion-item>
 			<p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
-				请输入密码(至少6个字符)
+				{{'INPUT_CORRECT_PASSWORD' | translate}}
 			</p>
 
 			<ion-item>
-				<ion-label stacked color="primary">选择重置密码的问题 *</ion-label>
-				<ion-select [(ngModel)]="signup.question" name="question" multiple="false" cancelText="容朕三思" okText="钦此~~" #question="ngModel">
+				<ion-label stacked color="primary">{{'RESET_PASSWORD_QUESTION' | translate}} *</ion-label>
+				<ion-select [(ngModel)]="signup.question" name="question" multiple="false" [cancelText]='"CANCEL" | translate' [okText]='"SAVE" | translate' #question="ngModel">
 					<ion-option value="您最喜欢的电视剧?">您最喜欢的电视剧?</ion-option>
 					<ion-option value="您最喜欢的电影?">您最喜欢的电影?</ion-option>
 					<ion-option value="您最喜欢的影视明星?">您最喜欢的影视明星?</ion-option>
@@ -70,7 +70,7 @@
 			</ion-item>
 
 			<ion-item>
-				<ion-label stacked color="primary">重置密码的问题答案 *</ion-label>
+				<ion-label stacked color="primary">{{'RESET_PASSWORD_ANSWER' | translate}} *</ion-label>
 				<ion-input [(ngModel)]="signup.answer" name="answer" #answer="ngModel" required>
 				</ion-input>
 			</ion-item>
@@ -78,7 +78,7 @@
 			<ion-item>
 				<ion-label stacked color="primary" style="margin-top: 4px;">
 					<button ion-button color="secondary" round small
-					(tap)='presentUserAgreement($event)'>同意用户协议? &nbsp;查看 &nbsp;
+					(tap)='presentUserAgreement($event)'>{{'AGREE_AGREEMENT' | translate}}? &nbsp;{{'VIEW' | translate}} &nbsp;
 					<ion-icon name="eye"> </ion-icon></button>
 				</ion-label>
 				<ion-toggle [(ngModel)]="signup.agreeUserAgreement" name="agreeUserAgreement" #name="ngModel"></ion-toggle>
@@ -87,7 +87,7 @@
 		</ion-list>
 
 		<div padding>
-			<button ion-button [disabled]="!isValid()"  (tap)="onSignup(signupForm)" type="submit" block>创建账户</button>
+			<button ion-button [disabled]="!isValid()"  (tap)="onSignup(signupForm)" type="submit" block>{{'SUBMIT_BUTTON' | translate}}</button>
 		</div>
 	</form>
 

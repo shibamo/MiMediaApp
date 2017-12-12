@@ -1,61 +1,46 @@
 {
   "MENU": "菜单",
-  "BACK_BUTTON_TEXT" : "回退",
+  "CANCEL": "取消",
+  "BACK_BUTTON_TEXT" : "返回",
   "SAVE" : "保存",  
-  "CALL_SUPPORT" : "拨打支持电话",
+  "VIDEO" : "电视",
+  "RADIO" : "电台",
+  "FORUM" : "交流",
 
   "NAME": "名称",
   "EMAIL": "电子邮件",
   "USERNAME": "用户名",
   "PASSWORD": "密码",
   "LOGIN": "登录",
+  "REGISTER": "注册",
+  "RESET_PASSWORD": "重置密码",  
   "LOGOUT": "注销",
-  "FLOW_TASK": "流程任务",
-  "FORM": "文档",
-  "FILES": "文件",
+  "ABOUT": "联系我们",
+  "PROFILE": "个人资料",
+  "CONTACT": "联系方式",
+
+  "INPUT_USERNAME": "请输入您的用户名",
+  "INPUT_CORRECT_PASSWORD": "输入密码(至少6个字符)",
+  "RESET_PASSWORD_QUESTION": "选择重置密码的问题",
+  "RESET_PASSWORD_ANSWER": "重置密码的问题答案",
+  "AGREE_AGREEMENT": "同意用户协议",
+  "VIEW": "查看",
+
   "OPERATION": "操作",
-  "CHOOSE_FLOW_CONNECTION": "请选择下一步操作",
-  "CHOOSE_TO_NODE_ROLE": "请选择下一步操作的执行者",
   "PLEASE_WAIT": "请等待...",
   "SUCCESSFULLY_SUBMITTED": "已成功提交",
   "OPERATION_FAILED": "操作失败",
-  "SUCCESSFULLY_CONNECTED": "已成功连接",  
+  "SUCCESSFULLY_CONNECTED": "已成功连接",
 
-  "LOGIN_TITLE": "登录OPAS",
   "LOGIN_BUTTON": "登 录",
   "SUBMIT_BUTTON": "提 交",
-  "REJECT_BUTTON": "拒 绝",
-  "REMARK_OF_APPROVER": "审批意见",
 
   "SYSTEM_SETTING": "系统设置",
   "API_ADDRESS": "服务地址",   
   "TEST": "测试",   
 
-  "PURCHASE_REQUISITION": "采购申请",
-  "ITEM_TYPE": "项目类型",
-  "ESTIMATED_COST": "预计费用",
-  "DOCUMENT_NO": "编号",
-  "DEPARTMENT": "部门",
-  "COSTCENTER": "成本中心",
-  "IS_FIRSTBUY": "首次购买?",
-  "REASON": "原因",
-  "DESCRIPTION": "说明",
-  "ESTIMATED_COST_IN_RMB": "预计费用(人民币)",
-
-  "PURCHASE_ORDER": "采购订单",
-  "CURRENCY_TYPE": "币种",
-  "TOTAL_AMOUNT_IN_RMB": "总额(人民币)",
-  "VENDOR_NAME": "供应商名",
-
-  "GOODS_RECEIVING": "收货",
-
-  "PAYMENT": "付款",
-
-  "DETAIL_TABLE": "明细表",
-
-  "INTERNAL_ADDRESSBOOK" : "内部通讯录",
-  "BY_NAME": "按姓名",
-  "BY_DEPARTMENT": "按部门", 
-  "BY_ROLE": "按角色", 
-  "SEARCH": "搜索" 
+  "SEARCH": "搜索" ,
+  
+  "NETWORK_DISCONNECTED": "亲,网络不给力 :-(",
+  "NETWORK_RECONNECTED": "网络已重新连接 :-)"
 }

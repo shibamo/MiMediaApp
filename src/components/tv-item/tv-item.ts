@@ -4,6 +4,7 @@ import { NavParams, ActionSheetController  } from 'ionic-angular';
 import {SettingService} from '../../providers/setting-service';
 import {ResourceService} from '../../providers/resource-service';
 import {WechatShareServiceProvider, ShareSceneType} from '../../providers/wechat-share-service';
+import {ContentVisitServiceProvider} from '../../providers/content-visit-service';
 
 /**
  * 用于显示视频节目的信息并提供播放视频的功能
@@ -19,10 +20,12 @@ export class TVItemComponent {
     public actionSheetService : ActionSheetController,    
     public settingService :SettingService,
     public resourceService :ResourceService, 
-    public wechatShareService: WechatShareServiceProvider)
+    public wechatShareService: WechatShareServiceProvider,
+    public contentVisitService: ContentVisitServiceProvider)
   {
     // 导航到本页时需要传入视频节目信息项
     this.item = navParams.get('item');
+    contentVisitService.sendTvVisit(this.item.id);
   }
 
   public share(item){
