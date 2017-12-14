@@ -3,7 +3,7 @@
 		<button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-		<ion-title>个人资料</ion-title>
+		<ion-title>{{'PROFILE' | translate}}</ion-title>
 	</ion-navbar>
 </ion-header>
 
@@ -11,7 +11,7 @@
 
   <ion-item>
     <ion-label stacked color="primary">
-      个人头像(点击可更改):
+      {{'PERSONAL_IMAGE' | translate}}  :
       <ion-avatar *ngIf="!!userService._user">
         <img [src]="resourceService.avatarImageUrlPrefix + userService._user.avatar" 
           class="avatar-image-preview" (tap)='changeAvatar()'>
@@ -21,13 +21,13 @@
 
   <ion-item *ngIf="imageRetrieved">
     <ion-label stacked color="primary">
-        更改后头像(预览):
+      {{'PERSONAL_IMAGE_PREVIEW' | translate}} :
       <ion-avatar >
         <img [src]="sanitizer.bypassSecurityTrustUrl(imageFileData)" class="avatar-image-preview" />
       </ion-avatar>
       <div text-center>
       <button ion-button color="secondary" outline round
-      (tap)='setAvatarWithFilePath()'>确认更改</button>
+      (tap)='setAvatarWithFilePath()'>{{'SAVE' | translate}}</button>
       </div>
     </ion-label>
   </ion-item>
@@ -35,24 +35,24 @@
   <ion-list no-lines>
     <ion-item>
       <ion-label stacked color="primary">
-        您的论坛用户名: {{userService._user && userService._user.name}}
+        {{'USERNAME' | translate}}: {{userService._user && userService._user.name}}
       </ion-label>
     </ion-item>
 
     <ion-item>
       <ion-label stacked color="primary">
-        您的注册邮箱: {{userService._user && userService._user.email}}
+        {{'EMAIL' | translate}}: {{userService._user && userService._user.email}}
       </ion-label>
     </ion-item>
 
   </ion-list>
   
   <div>
-    <button ion-button (tap)="logout()" block>退出登录</button>
+    <button ion-button (tap)="logout()" block>{{'LOGOUT' | translate}}</button>
   </div>
 
   <div>
-    <button ion-button (tap)="changePassword()" block color="danger">更改密码</button>
+    <button ion-button (tap)="changePassword()" block color="danger">{{'CHANGE_PASSWORD' | translate}}</button>
   </div>
 
 </ion-content>
