@@ -6,18 +6,18 @@
     <ion-buttons start>
       <button ion-button (click)="cancel()">
         <span color="primary">
-          取消
+          {{'CANCEL' | translate}}
         </span>
         <!-- <ion-icon name="md-close" showWhen="android,windows"></ion-icon> -->
       </button>
     </ion-buttons>
 
-    <ion-title>回帖-{{mainThread.name}}</ion-title>
+    <ion-title>{{'THREAD_REPLY' | translate}}-{{mainThread.name}}</ion-title>
 
     <ion-buttons end>
       <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>
         <span color="primary">
-          完成
+          {{'SUBMIT_BUTTON' | translate}}
         </span>
         <!-- <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon> -->
       </button>
@@ -29,7 +29,7 @@
   <form *ngIf="form" [formGroup]="form">
     <ion-list>
       <ion-item>
-        <ion-textarea rows="8" placeholder="回帖内容" formControlName="content"></ion-textarea>
+        <ion-textarea rows="8" placeholder="回帖内容(content)" formControlName="content"></ion-textarea>
       </ion-item>
     </ion-list>
   </form>

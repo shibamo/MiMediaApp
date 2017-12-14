@@ -10,10 +10,10 @@
 <ion-content padding>
   <ion-refresher (ionRefresh)="updateList($event)">
     <ion-refresher-content
-      pullingIcon="arrow-dropdown"
-      pullingText="下拉更新"
+      pullingIcon ="arrow-dropdown"
+      [pullingText] = '"PULL_TO_REFRESH" | translate'
       refreshingSpinner="circles"
-      refreshingText="正在更新...">
+      [refreshingText]='"PLEASE_WAIT" | translate'>
     </ion-refresher-content>
   </ion-refresher>
 

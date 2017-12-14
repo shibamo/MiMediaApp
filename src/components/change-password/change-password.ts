@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ViewController,LoadingController, Loading,ToastController } from 'ionic-angular';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import {UserService} from '../../providers/user-service';
 
 @Component({
@@ -17,12 +19,13 @@ export class ChangePasswordComponent {
   constructor(public viewCtrl: ViewController, 
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
+    public translateService: TranslateService,    
     public userService :UserService,  ) {
   }
 
   done() {
     this.loading = this.loadingCtrl.create({
-      content: '正在处理...'
+      content: this.translateService.instant("PLEASE_WAIT")
     });
 
     this.loading.present();
@@ -31,7 +34,7 @@ export class ChangePasswordComponent {
     .subscribe(res => {
       console.info(res);
       this.toastCtrl.create({
-        message: '密码已成功修改',
+        message: this.translateService.instant("PASSWORD_CHANGED"),
         position: 'middle',
         duration: 5000
       }).present(); 
@@ -39,7 +42,7 @@ export class ChangePasswordComponent {
       this.viewCtrl.dismiss();
     }, err => {
       this.toastCtrl.create({
-        message: '密码修改失败:' + err.json().data.message,
+        message: this.translateService.instant("PASSWORD_CHANGE_FAIL") + err.json().data.message,
         position: 'middle',
         duration: 10000
       }).present(); 

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Refresher, ToastController, NavParams, NavController  } from 'ionic-angular';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import {SettingService} from '../../providers/setting-service';
 import {ResourceService} from '../../providers/resource-service';
 import { VideoService } from '../../providers/video-service';
@@ -18,6 +20,7 @@ export class TVProgrameListComponent {
   constructor(public toastCtrl: ToastController, 
     public navParams: NavParams,
     public navCtrl: NavController,
+    public translateService: TranslateService,    
     public videoService :VideoService,
     public settingService :SettingService,
     public resourceService :ResourceService,) 
@@ -39,7 +42,7 @@ export class TVProgrameListComponent {
           this.items = data[this.listInfo.name];
           refresher && refresher.complete();
           refresher && this.toastCtrl.create({
-            message: '已获取最新节目单...',
+            message: this.translateService.instant("PROGRAM_LIST_REFRESHED"),
             position: 'middle',
             duration: 1000
           }).present();           
@@ -48,7 +51,7 @@ export class TVProgrameListComponent {
       (_error: any) =>{
         refresher && refresher.complete();
         refresher && this.toastCtrl.create({
-          message: '获取数据出错,请检查您的网络连接情况.' + _error,
+          message: this.translateService.instant("ACCESS_DATA_ERROR") + _error,
           position: 'middle',
           duration: 10000
         }).present();

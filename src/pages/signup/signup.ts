@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import { NavController, ToastController, 
   ViewController, ModalController } from 'ionic-angular';
 
@@ -28,6 +30,7 @@ export class SignupPage {
     public viewCtrl: ViewController,
     public toastCtrl: ToastController,
     public modalController: ModalController,
+    public translateService: TranslateService,
     public userData: UserData,
     public userService: UserService) {}
 
@@ -36,7 +39,7 @@ export class SignupPage {
     if (form.valid && this.isEmailValid()) {
       this.userService.register(this.signup).subscribe((resp) => {
         let toast = this.toastCtrl.create({
-          message: "已成功创建账户, 欢迎参与论坛区发帖讨论",
+          message: this.translateService.instant("REGISTER_SUCCESS"),
           duration: 3000,
           position: 'middle'
         });  
@@ -45,7 +48,7 @@ export class SignupPage {
      }, (err) => {
         // Unable to register
         let toast = this.toastCtrl.create({
-          message: "创建账户失败, 请重试: " + //原因描述
+          message: this.translateService.instant("REGISTER_FAIL") + //原因描述
             (err.json && err.json().data.message || err.toString()),
           duration: 3000,
           position: 'middle'

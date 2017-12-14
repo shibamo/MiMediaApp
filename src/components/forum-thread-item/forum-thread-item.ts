@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController,NavParams, ModalController,
   ToastController, ActionSheetController } from 'ionic-angular';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import {ForumThreadReplyComponent} from '../forum-thread-reply/forum-thread-reply';
 import {ComplainThreadComponent} from '../complain-thread/complain-thread';
 import {ComplainThreadReplyComponent} from '../complain-thread-reply/complain-thread-reply';
@@ -24,6 +26,7 @@ export class ForumThreadItemComponent {
     public toastCtrl: ToastController, 
     public modalCtrl: ModalController,    
     public navParams: NavParams,
+    public translateService: TranslateService,     
     public settingService :SettingService,
     public resourceService :ResourceService,        
     public userLoginCheckService :UserLoginCheckServiceProvider,
@@ -38,7 +41,7 @@ export class ForumThreadItemComponent {
 
   // 回贴
   public addReply(){
-    if(!this.userLoginCheckService.makeSureUserLogined("未登录用户不能回复", this.showReplyDialog.bind(this))) return;
+    if(!this.userLoginCheckService.makeSureUserLogined(this.translateService.instant("NEED_LOGINED_USER"), this.showReplyDialog.bind(this))) return;
 
     this.showReplyDialog();
   }
@@ -50,7 +53,7 @@ export class ForumThreadItemComponent {
     modalDialog.onDidDismiss(item => {
       if (item) {
         const toast = this.toastCtrl.create({
-          message: '回帖已发布,后台审核后将可见',
+          message: this.translateService.instant("THREAD_PUBLISHED"),
           position: 'middle',
           duration: 3000
         });
@@ -63,7 +66,7 @@ export class ForumThreadItemComponent {
 
   // 投诉主贴
   public complainMain(){
-    if(!this.userLoginCheckService.makeSureUserLogined("投诉功能只对已登录用户开放", this.showComplainMainDialog.bind(this))) return;
+    if(!this.userLoginCheckService.makeSureUserLogined(this.translateService.instant("NEED_LOGINED_USER"), this.showComplainMainDialog.bind(this))) return;
     
     this.showComplainMainDialog();
   }
@@ -75,7 +78,7 @@ export class ForumThreadItemComponent {
     modalDialog.onDidDismiss(item => {
       if (item) {
         const toast = this.toastCtrl.create({
-          message: '投诉信息已发送,后台人员将核实处理',
+          message: this.translateService.instant("SUCCESSFULLY_SUBMITTED"),
           position: 'middle',
           duration: 3000
         });
@@ -88,7 +91,7 @@ export class ForumThreadItemComponent {
 
   // 投诉回复贴
   public complainReply(reply){
-    if(!this.userLoginCheckService.makeSureUserLogined("投诉功能只对已登录用户开放", this.showComplainReplyDialog.bind(this, reply))) return;
+    if(!this.userLoginCheckService.makeSureUserLogined(this.translateService.instant("NEED_LOGINED_USER"), this.showComplainReplyDialog.bind(this, reply))) return;
     
     this.showComplainReplyDialog(reply);
   }
@@ -100,7 +103,7 @@ export class ForumThreadItemComponent {
     modalDialog.onDidDismiss(item => {
       if (item) {
         const toast = this.toastCtrl.create({
-          message: '投诉信息已发送,后台人员将核实处理',
+          message: this.translateService.instant("SUCCESSFULLY_SUBMITTED"),
           position: 'middle',
           duration: 3000
         });
@@ -115,10 +118,10 @@ export class ForumThreadItemComponent {
   public share(item){
     let that = this;
     this.actionSheetService.create({
-      title: '微信分享',
+      title: this.translateService.instant("WECHAT_SHARE"),
       buttons: [
         {
-          text: '分享到朋友圈',
+          text: this.translateService.instant("WECHAT_TO_CIRCLE"),
           handler: () => {
             that.wechatShareService.shareForumThread(ShareSceneType.FriendsCircle,
               item.name,
@@ -128,7 +131,7 @@ export class ForumThreadItemComponent {
                 this.settingService.forumThreadWebviewPath + item.id);
           }
         },{
-          text: '分享给朋友',
+          text: this.translateService.instant("WECHAT_TO_FRIEND"),
           handler: () => {
             that.wechatShareService.shareForumThread(ShareSceneType.ToOneFriend,
               item.name,
@@ -138,7 +141,7 @@ export class ForumThreadItemComponent {
                 this.settingService.forumThreadWebviewPath + item.id);
           }
         },{
-          text: '取消',
+          text: this.translateService.instant("CANCEL"),
           role: 'cancel',
           handler: () => {
           }

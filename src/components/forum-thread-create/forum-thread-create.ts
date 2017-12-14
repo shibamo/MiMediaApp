@@ -3,6 +3,8 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, ViewController, NavParams , ModalController,
   LoadingController, Loading,ToastController } from 'ionic-angular';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import {SettingService} from '../../providers/setting-service';
 import {ForumService} from '../../providers/forum-service';
 import {UserService} from '../../providers/user-service';
@@ -29,6 +31,7 @@ export class ForumThreadCreateComponent {
     public loadingCtrl: LoadingController,
     public modalCtrl: ModalController,
     public toastCtrl: ToastController,
+    public translateService: TranslateService,     
     public settingService :SettingService,
     public forumService:ForumService,
     public userService :UserService,        
@@ -52,7 +55,7 @@ export class ForumThreadCreateComponent {
     addModal.onDidDismiss(item => {
       if (item && item.imageFileData) {
         this.loading = this.loadingCtrl.create({
-          content: '正在上传图片文件...'
+          content: this.translateService.instant("UPLOADING_IMAGE")
         });
         this.loading.present();
 
@@ -76,7 +79,7 @@ export class ForumThreadCreateComponent {
 
   private imageUploadedFail(self, err, item){
     self.toastCtrl.create({
-      message: '上传图片失败:' + err.json().data.message,
+      message: this.translateService.instant("UPLOAD_IMAGE_FAIL") + err.json().data.message,
       duration: 10000,
       position: 'middle',
     }).present(); 
@@ -91,7 +94,7 @@ export class ForumThreadCreateComponent {
     if(!this.form.valid) { return; }
 
     this.loading = this.loadingCtrl.create({
-      content: '正在提交...'
+      content: this.translateService.instant("PLEASE_WAIT")
     });
     this.loading.present();
 
@@ -106,7 +109,7 @@ export class ForumThreadCreateComponent {
     }, err => {
       this.loading.dismiss();
       this.toastCtrl.create({
-        message: '发帖失败:' + err,
+        message: this.translateService.instant("OPERATION_FAILED") + ': ' + err,
         duration: 30000,
         position: 'middle',
       }).present(); 

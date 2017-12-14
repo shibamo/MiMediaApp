@@ -3,6 +3,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { NavController, ViewController, NavParams , 
   ActionSheetController ,ToastController} from 'ionic-angular';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import { ImageCustomer } from '../../models/image-customer';
 import { TakePictureServiceProvider } from '../../providers/take-picture-service';
 
@@ -25,6 +27,7 @@ export class ForumThreadSectionCreateComponent implements ImageCustomer {
     public viewCtrl: ViewController, 
     public toastCtrl: ToastController,    
     public actionSheetCtrl: ActionSheetController,
+    public translateService: TranslateService,      
     private takePictureService: TakePictureServiceProvider,
     public sanitizer: DomSanitizer)
   {
@@ -32,10 +35,10 @@ export class ForumThreadSectionCreateComponent implements ImageCustomer {
 
   setImage(){
     let actionSheet = this.actionSheetCtrl.create({
-      title: '设置图片',
+      title: this.translateService.instant("SET_IMAGE"),
       buttons: [
         {
-          text: '从相机(推荐)',
+          text: this.translateService.instant("FROM_CAMERA"),
           handler: () => {
             if(!!(window as any).cordova){
               this.takePictureService.setImageFromCamera(this);
@@ -45,12 +48,12 @@ export class ForumThreadSectionCreateComponent implements ImageCustomer {
             }
           }
         },{
-          text: '从图库',
+          text: this.translateService.instant("FROM_LIBRARY"),
           handler: () => {
             this.takePictureService.setImageFromLibrary(this);
           }
         },{
-          text: '取消',
+          text: this.translateService.instant("CANCEL"),
           role: 'cancel',
           handler: () => {
           }

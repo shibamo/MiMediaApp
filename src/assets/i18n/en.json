@@ -6,7 +6,8 @@
   "VIDEO" : "Video",
   "RADIO" : "Radio",
   "FORUM" : "Forum",
-
+  "AGREEMENT": "User agreement & privacy policy",
+  
   "NAME": "Name",
   "EMAIL": "Email",
   "USERNAME": "Username",
@@ -14,23 +15,37 @@
   "LOGIN": "Sign in",
   "REGISTER": "Register",
   "RESET_PASSWORD": "Reset Password", 
+  "CHANGE_PASSWORD": "Change Password",   
   "LOGOUT": "Log out", 
   "ABOUT": "About", 
   "PROFILE": "Profile",
   "CONTACT": "Contact",
+  "PERSONAL_IMAGE":"Personal photo",
+  "PERSONAL_IMAGE_PREVIEW":"Photo preview",
+  "CHANGE_PERSONAL_IMAGE":"Change photo",  
 
   "INPUT_USERNAME": "Please input your nick name",
   "INPUT_CORRECT_PASSWORD": "Password (at least 6 characters)",
   "RESET_PASSWORD_QUESTION": "Question to reset password",
   "RESET_PASSWORD_ANSWER": "Answer to reset password",
+  "GET_RESET_PASSWORD_QUESTION": "Show question",  
   "AGREE_AGREEMENT": "User Agreement",
   "VIEW": "View",  
 
   "OPERATION": "Operation",
+  "PULL_TO_REFRESH":"Pull to refresh",  
   "PLEASE_WAIT": "Please wait...",
   "SUCCESSFULLY_SUBMITTED": "Successfully submitted",
   "OPERATION_FAILED": "Operation failed",
   "SUCCESSFULLY_CONNECTED": "Successfully connected",
+
+  "INPUT_OLD_PASSWORD": "Input old password",
+  "INPUT_NEW_PASSWORD": "Input new password(at least 6 characters)",
+  "INPUT_NEW_PASSWORD_AGAIN": "Input new password again",
+
+  "PASSWORD_CHANGED": "Password changed",
+  "PASSWORD_CHANGE_FAIL": "Changing password failed:", 
+  "PASSWORD_RESETTED": "Password resetted", 
 
   "LOGIN_BUTTON": "Login",
   "SUBMIT_BUTTON": "Submit",
@@ -42,5 +57,49 @@
   "SEARCH": "Search", 
 
   "NETWORK_DISCONNECTED": "Network disconnected :-(",
-  "NETWORK_RECONNECTED": "Network reconnected :-)"
+  "NETWORK_RECONNECTED": "Network reconnected :-)",
+
+  "LOGIN_SUCCESS": "Login successfully, welcome",
+  "LOGIN_FAIL": "Login failed, please retry:",
+  "NEED_LOGINED_USER": "This operation requires login",
+  "REGISTER_SUCCESS": "Register successfully, welcome",
+  "REGISTER_FAIL": "Register failed, please retry:",
+
+  "ACCESS_PHOTO_FAIL": "Accessing photo failed",
+
+  "WECHAT_START_FAILURE":"Soryy: cannot start wechat",
+  "WECHAT_INSTALL_FAILURE":"Soryy: wechat is not installed",
+  "WECHAT_DETECT_FAILURE":"Soryy: wechat detection error,",
+  "WECHAT_WORK_FAILURE":"Soryy: wechat sharing failure:",
+  "WECHAT_SHARE":"Wechat Share",  
+  "WECHAT_TO_CIRCLE":"To circle",
+  "WECHAT_TO_FRIEND":"To friend",
+
+  "COMPLAIN_THREAD":"Complain forum thread",
+  "FORUM_BOARD_LIST": "Forum board list",
+  "FORUM_ADD_THREAD": "Add new thread",
+  "FORUM_REMOVE_SECTION": "Remove new section",
+  "FORUM_ADD_SECTION": "Add new section",
+  "FORUM_SECTION": "Image & text section",
+  "THREAD_AUTHOR":"Author",
+  "THREAD_LIKE":"Like", 
+  "THREAD_DISLIKE":"Dis", 
+  "FORUM_COMPLAIN":"Complain",
+  "THREAD_PUBLISHED":"Thread published",  
+  "THREAD_REPLY":"Reply", 
+  "SET_IMAGE":"Set image",
+  "FROM_CAMERA":"From camera",
+  "FROM_LIBRARY":"From photo library",  
+
+  "PROGRAM_LIST_REFRESHED":"Program list refreshed...",
+  "RADIO_PROGRAM":"Radio program",
+  "TV_PROGRAM":"TV program",
+  "MOST_RECENT":"Newest",
+  "REFRESHED":"Refreshed...",
+
+  "UPLOADING_IMAGE":"Uploading image...",
+  "UPLOAD_IMAGE_FAIL":"Uploading image failed:",
+  
+  "ACCESS_DATA_ERROR":"Access data error.",
+  "NO_MORE_DATA":"No more data left"
 }

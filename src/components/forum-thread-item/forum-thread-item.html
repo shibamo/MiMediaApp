@@ -22,7 +22,7 @@
         <img [src]="resourceService.avatarImageUrlPrefix + item.avatar">
       </ion-avatar>
       <h2>{{item.name}}</h2>
-      <p>{{item.authorName}}(楼主) {{item.date}}</p>
+      <p>{{item.authorName}}({{'THREAD_AUTHOR' | translate}}) {{item.date}}</p>
     </ion-item>
 
     <ion-card-content>
@@ -33,19 +33,19 @@
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="thumbs-up"></ion-icon>
-          <div>0 赞</div>
+          <div>0 {{'THREAD_LIKE' | translate}}</div>
         </button>
       </ion-col>
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="thumbs-down"></ion-icon>
-          <div>0 踩</div>
+          <div>0 {{'THREAD_DISLIKE' | translate}}</div>
         </button>
       </ion-col>
       <ion-col>
         <button ion-button icon-left clear small (tap)="complainMain()">
           <ion-icon name="sad"></ion-icon>
-          <div>投诉</div>
+          <div>{{'FORUM_COMPLAIN' | translate}}</div>
         </button>
       </ion-col>
     </ion-row>
@@ -69,19 +69,19 @@
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="thumbs-up"></ion-icon>
-          <div>0 赞</div>
+          <div>0 {{'THREAD_LIKE' | translate}}</div>
         </button>
       </ion-col>
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="thumbs-down"></ion-icon>
-          <div>0 踩</div>
+          <div>0 {{'THREAD_DISLIKE' | translate}}</div>
         </button>
       </ion-col>
       <ion-col>
         <button ion-button icon-left clear small (tap)="complainReply(reply)">
           <ion-icon name="sad"></ion-icon>
-          <div>投诉</div>
+          <div>{{'FORUM_COMPLAIN' | translate}}</div>
         </button>
       </ion-col>
     </ion-row>

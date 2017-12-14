@@ -3,6 +3,8 @@ import { NavController,NavParams, ModalController,Loading,
   ToastController,LoadingController,ViewController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import {ForumService} from '../../providers/forum-service';
 
 @Component({
@@ -22,6 +24,7 @@ export class ComplainThreadComponent {
     public loadingCtrl: LoadingController,
     public viewCtrl: ViewController,    
     public navParams: NavParams,
+    public translateService: TranslateService,  
     public forumService:ForumService,
     formBuilder: FormBuilder)
   {
@@ -44,7 +47,7 @@ export class ComplainThreadComponent {
     if(!this.form.valid) { return; }
 
     this.loading = this.loadingCtrl.create({
-      content: '正在提交...'
+      content: this.translateService.instant("PLEASE_WAIT")
     });
 
     this.loading.present();

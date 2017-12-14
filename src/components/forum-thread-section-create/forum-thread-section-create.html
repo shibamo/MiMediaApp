@@ -3,18 +3,18 @@
     <ion-buttons start>
       <button ion-button (tap)="cancel()">
         <span color="primary" showWhen="ios">
-          取消
+          {{'CANCEL' | translate}}
         </span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
     </ion-buttons>
 
-    <ion-title>帖子图文段</ion-title>
+    <ion-title>{{'FORUM_SECTION' | translate}}</ion-title>
 
     <ion-buttons end>
       <button ion-button (tap)="done()" [disabled]="!isReadyToSave()" strong>
         <span color="primary" showWhen="ios">
-          完成
+          {{'SUBMIT_BUTTON' | translate}}
         </span>
         <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>
       </button>
@@ -31,7 +31,7 @@
     <ion-item>
       <div text-center>
         <button ion-button color="secondary" outline round
-        (tap)='setImage()'>指定图片</button>
+        (tap)='setImage()'>{{'SET_IMAGE' | translate}}</button>
       </div>
       <img [src]="sanitizer.bypassSecurityTrustUrl(imageFileData)" class="" *ngIf="imageRetrieved"/>
     </ion-item>

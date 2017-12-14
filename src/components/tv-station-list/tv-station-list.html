@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>电视节目</ion-title>
+    <ion-title>{{'TV_PROGRAM' | translate}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -11,16 +11,16 @@
   <ion-refresher (ionRefresh)="updateList($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
-      pullingText="下拉更新"
+      [pullingText] = '"PULL_TO_REFRESH" | translate'
       refreshingSpinner="circles"
-      refreshingText="正在更新...">
+      [refreshingText]='"PLEASE_WAIT" | translate'>
     </ion-refresher-content>
   </ion-refresher>
 
   <ion-card *ngFor="let item of items" (tap)="gotoStation(item)">
     <img style="max-height: 200px;" [src]="resourceService.tvImageUrlPrefix + item.lastPrograme.image" />
     <div class="card-title">{{item.caption}}</div>
-    <div class="card-subtitle">最新: {{item.lastPrograme.name}}</div>
+    <div class="card-subtitle">{{'MOST_RECENT' | translate}}: {{item.lastPrograme.name}}</div>
   </ion-card>
 
 </ion-content>

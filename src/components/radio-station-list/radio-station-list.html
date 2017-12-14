@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>电台节目</ion-title>
+    <ion-title>{{'RADIO_PROGRAM' | translate}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -11,9 +11,9 @@
   <ion-refresher (ionRefresh)="updateList($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
-      pullingText="下拉更新"
+      [pullingText] = '"PULL_TO_REFRESH" | translate'
       refreshingSpinner="circles"
-      refreshingText="正在更新...">
+      [refreshingText]='"PLEASE_WAIT" | translate'>
     </ion-refresher-content>
   </ion-refresher>
   
@@ -22,7 +22,7 @@
       <ion-col *ngFor="let item of items" (tap)="gotoStation(item)" col-6 wrap>
         <img class="station-image" [src]="resourceService.radioImageUrlPrefix + item.lastPrograme.image" />
         <div class="station-title">{{item.caption}}</div>
-        <div class="station-subtitle">最新: {{item.lastPrograme.name}}</div>
+        <div class="station-subtitle">{{'MOST_RECENT' | translate}}: {{item.lastPrograme.name}}</div>
       </ion-col>
     </ion-row>
   </ion-grid>

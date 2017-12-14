@@ -3,12 +3,12 @@
     <ion-buttons start>
       <button ion-button (tap)="cancel()">
         <span color="primary" showWhen="ios">
-          返回
+            {{'BACK_BUTTON_TEXT' | translate}}
         </span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>用户协议与隐私政策</ion-title>
+    <ion-title>{{'AGREEMENT' | translate}}</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>

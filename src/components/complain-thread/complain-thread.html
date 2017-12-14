@@ -3,17 +3,17 @@
     <ion-buttons start>
       <button ion-button (tap)="cancel()">
         <span color="primary">
-          取消
+          {{'CANCEL' | translate}}
         </span>
       </button>
     </ion-buttons>
 
-    <ion-title>投诉帖子内容</ion-title>
+    <ion-title>{{'COMPLAIN_THREAD' | translate}}</ion-title>
 
     <ion-buttons end>
       <button ion-button (tap)="done()" [disabled]="!isReadyToSave" strong>
         <span color="primary">
-          完成
+          {{'SUBMIT_BUTTON' | translate}}
         </span>
       </button>
     </ion-buttons>
@@ -24,7 +24,7 @@
   <form *ngIf="form" [formGroup]="form">
     <ion-list>
       <ion-item>
-        <ion-textarea rows="8" placeholder="请输入您投诉该贴的理由" formControlName="complainContent"></ion-textarea>
+        <ion-textarea rows="8" placeholder="请输入您投诉该贴的理由(complain reason)" formControlName="complainContent"></ion-textarea>
       </ion-item>
     </ion-list>
   </form>

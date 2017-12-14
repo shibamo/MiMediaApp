@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import { ToastController } from 'ionic-angular';
 
 declare var Wechat:any;
@@ -16,10 +18,13 @@ export class WechatShareServiceProvider {
   isWechatInstalled : boolean = true;
   dictSceneType : Object = {}; // 将在构造函数中初始化
 
-  constructor(public toastCtrl: ToastController,) {
+  constructor(
+    public toastCtrl: ToastController,
+    public translateService: TranslateService,
+  ) {
     if (typeof Wechat === "undefined") {
       this.toastCtrl.create({
-        message: '抱歉: APP出错,无法启动微信分享插件',
+        message: this.translateService.instant("WECHAT_START_FAILURE"),
         duration: 5,
         position: 'middle',
       }).present(); 
@@ -28,7 +33,7 @@ export class WechatShareServiceProvider {
       Wechat.isInstalled(function (installed) {
         if(!installed){
           this.toastCtrl.create({
-            message: '抱歉: APP侦测到本电话未安装微信,无法启动微信分享插件',
+            message: this.translateService.instant("WECHAT_INSTALL_FAILURE"),
             duration: 5,
             position: 'middle',
           }).present(); 
@@ -39,7 +44,7 @@ export class WechatShareServiceProvider {
         }
       }, function (reason) {
         this.toastCtrl.create({
-          message: '抱歉: APP无法侦测到本电话的微信安装情况,无法启动微信分享插件,' + reason,
+          message: this.translateService.instant("WECHAT_DETECT_FAILURE") + reason,
           duration: 5,
           position: 'middle',
         }).present(); 
@@ -118,7 +123,7 @@ export class WechatShareServiceProvider {
     Wechat.share(params, function () {
     }, function (reason) {
       this.toastCtrl.create({
-        message: '抱歉, 分享到微信出错: ' + reason,
+        message: this.translateService.instant("WECHAT_WORK_FAILURE") + reason,
         duration: 5,
         position: 'middle',
       }).present(); 

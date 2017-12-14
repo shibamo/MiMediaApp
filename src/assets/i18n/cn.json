@@ -6,6 +6,7 @@
   "VIDEO" : "电视",
   "RADIO" : "电台",
   "FORUM" : "交流",
+  "AGREEMENT": "用户协议与隐私政策",
 
   "NAME": "名称",
   "EMAIL": "电子邮件",
@@ -13,24 +14,38 @@
   "PASSWORD": "密码",
   "LOGIN": "登录",
   "REGISTER": "注册",
-  "RESET_PASSWORD": "重置密码",  
+  "RESET_PASSWORD": "重置密码",
+  "CHANGE_PASSWORD": "更改密码", 
   "LOGOUT": "注销",
   "ABOUT": "联系我们",
   "PROFILE": "个人资料",
   "CONTACT": "联系方式",
+  "PERSONAL_IMAGE":"个人头像(点击可更改)",
+  "PERSONAL_IMAGE_PREVIEW":"更改后头像(预览)",
+  "CHANGE_PERSONAL_IMAGE":"更改头像",
 
   "INPUT_USERNAME": "请输入您的用户名",
   "INPUT_CORRECT_PASSWORD": "输入密码(至少6个字符)",
   "RESET_PASSWORD_QUESTION": "选择重置密码的问题",
   "RESET_PASSWORD_ANSWER": "重置密码的问题答案",
+  "GET_RESET_PASSWORD_QUESTION": "获取重置密码的问题",
   "AGREE_AGREEMENT": "同意用户协议",
   "VIEW": "查看",
 
   "OPERATION": "操作",
+  "PULL_TO_REFRESH":"下拉更新",
   "PLEASE_WAIT": "请等待...",
   "SUCCESSFULLY_SUBMITTED": "已成功提交",
   "OPERATION_FAILED": "操作失败",
   "SUCCESSFULLY_CONNECTED": "已成功连接",
+
+  "INPUT_OLD_PASSWORD": "输入旧密码",
+  "INPUT_NEW_PASSWORD": "输入新密码(至少6个字符)",
+  "INPUT_NEW_PASSWORD_AGAIN": "再输入一次",
+
+  "PASSWORD_CHANGED": "密码已成功修改",
+  "PASSWORD_CHANGE_FAIL": "密码修改失败:",  
+  "PASSWORD_RESETTED": "密码已成功重置",   
 
   "LOGIN_BUTTON": "登 录",
   "SUBMIT_BUTTON": "提 交",
@@ -42,5 +57,49 @@
   "SEARCH": "搜索" ,
   
   "NETWORK_DISCONNECTED": "亲,网络不给力 :-(",
-  "NETWORK_RECONNECTED": "网络已重新连接 :-)"
+  "NETWORK_RECONNECTED": "网络已重新连接 :-)",
+
+  "LOGIN_SUCCESS": "已成功登录, 欢迎参与社区活动",
+  "LOGIN_FAIL": "登录失败,请重试:",
+  "NEED_LOGINED_USER": "该操作需要先登录",
+  "REGISTER_SUCCESS": "已成功创建账户, 欢迎参与社区活动",
+  "REGISTER_FAIL": "创建账户失败,请重试:",
+
+  "ACCESS_PHOTO_FAIL":"获取拍照图片出错",
+
+  "WECHAT_START_FAILURE":"抱歉: APP出错,无法启动微信分享插件",
+  "WECHAT_INSTALL_FAILURE":"抱歉: APP侦测到本电话未安装微信,无法启动微信分享插件",
+  "WECHAT_DETECT_FAILURE":"抱歉: APP无法侦测到本电话的微信安装情况,无法启动微信分享插件,",
+  "WECHAT_WORK_FAILURE":"抱歉, 分享到微信出错:",
+  "WECHAT_SHARE":"微信分享",
+  "WECHAT_TO_CIRCLE":"分享到朋友圈",
+  "WECHAT_TO_FRIEND":"分享给朋友",
+
+  "COMPLAIN_THREAD":"投诉帖子内容",
+  "FORUM_BOARD_LIST": "论坛列表",
+  "FORUM_ADD_THREAD": "发新帖",
+  "FORUM_REMOVE_SECTION": "删除图文段",
+  "FORUM_ADD_SECTION": "增加图文段",
+  "FORUM_SECTION": "图文段",
+  "THREAD_AUTHOR":"楼主",
+  "THREAD_LIKE":"赞", 
+  "THREAD_DISLIKE":"踩", 
+  "FORUM_COMPLAIN":"投诉",
+  "THREAD_PUBLISHED":"回帖已发布,后台审核后将可见",
+  "THREAD_REPLY":"回帖", 
+  "SET_IMAGE":"指定图片",
+  "FROM_CAMERA":"从相机(推荐)",
+  "FROM_LIBRARY":"从图库",
+
+  "PROGRAM_LIST_REFRESHED":"已获取最新节目单...",
+  "RADIO_PROGRAM":"电台节目",
+  "TV_PROGRAM":"电视节目",  
+  "MOST_RECENT":"最新",
+  "REFRESHED":"已刷新...",
+
+  "UPLOADING_IMAGE":"正在上传图片文件...",
+  "UPLOAD_IMAGE_FAIL":"上传图片失败:",
+
+  "ACCESS_DATA_ERROR":"获取数据出错,请检查您的网络连接情况.",
+  "NO_MORE_DATA":"已无更多数据"
 }

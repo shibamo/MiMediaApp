@@ -32,7 +32,7 @@ export class LoginPage {
     if (form.valid) {
       this.userService.login(this.login).subscribe((resp) => {
         let toast = this.toastCtrl.create({
-          message: "已成功登录, 欢迎参与论坛区发帖讨论",
+          message: this.translateService.instant("LOGIN_SUCCESS"),
           duration: 3000,
           position: 'middle'
         });  
@@ -42,7 +42,7 @@ export class LoginPage {
       }, (err) => {
         // Unable to login
         let toast = this.toastCtrl.create({
-          message: "登录失败,请重试: " + //原因描述
+          message: this.translateService.instant("LOGIN_FAIL") + //原因描述
             (err.json && err.json().data.message || err.toString()),
           duration: 5000,
           position: 'middle'

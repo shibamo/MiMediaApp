@@ -3,6 +3,8 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, ViewController, NavParams, 
   LoadingController, Loading } from 'ionic-angular';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import {ForumService} from '../../providers/forum-service';
 
 @Component({
@@ -21,6 +23,7 @@ export class ForumThreadReplyComponent {
     public navParams: NavParams,    
     public viewCtrl: ViewController,
     public loadingCtrl: LoadingController, 
+    public translateService: TranslateService,     
     public forumService:ForumService,    
     formBuilder: FormBuilder) 
   {
@@ -40,7 +43,7 @@ export class ForumThreadReplyComponent {
     if(!this.form.valid) { return; }
 
     this.loading = this.loadingCtrl.create({
-      content: '正在提交...'
+      content: this.translateService.instant("PLEASE_WAIT")
     });
 
     this.loading.present();

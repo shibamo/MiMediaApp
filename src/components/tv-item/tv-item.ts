@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavParams, ActionSheetController  } from 'ionic-angular';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import {SettingService} from '../../providers/setting-service';
 import {ResourceService} from '../../providers/resource-service';
 import {WechatShareServiceProvider, ShareSceneType} from '../../providers/wechat-share-service';
@@ -18,6 +20,7 @@ export class TVItemComponent {
 
   constructor(public navParams: NavParams,
     public actionSheetService : ActionSheetController,    
+    public translateService: TranslateService, 
     public settingService :SettingService,
     public resourceService :ResourceService, 
     public wechatShareService: WechatShareServiceProvider,
@@ -31,10 +34,10 @@ export class TVItemComponent {
   public share(item){
     let that = this;
     this.actionSheetService.create({
-      title: '微信分享',
+      title: this.translateService.instant("WECHAT_SHARE"),
       buttons: [
         {
-          text: '分享到朋友圈',
+          text: this.translateService.instant("WECHAT_TO_CIRCLE"),
           handler: () => {
             that.wechatShareService.shareTVPrograme(ShareSceneType.FriendsCircle,
               item.name,
@@ -44,7 +47,7 @@ export class TVItemComponent {
                 this.settingService.tvProgrameWebviewPath + item.id);
           }
         },{
-          text: '分享给朋友',
+          text: this.translateService.instant("WECHAT_TO_FRIEND"),
           handler: () => {
             that.wechatShareService.shareTVPrograme(ShareSceneType.ToOneFriend,
               item.name,
@@ -54,7 +57,7 @@ export class TVItemComponent {
                 this.settingService.tvProgrameWebviewPath + item.id);
           }
         },{
-          text: '取消',
+          text: this.translateService.instant("CANCEL"),
           role: 'cancel',
           handler: () => {
           }

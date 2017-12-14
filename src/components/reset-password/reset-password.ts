@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ViewController,LoadingController, Loading,ToastController } from 'ionic-angular';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import {UserService} from '../../providers/user-service';
 
 @Component({
@@ -19,12 +21,13 @@ export class ResetPasswordComponent {
   constructor(public viewCtrl: ViewController, 
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
+    public translateService: TranslateService,    
     public userService :UserService,  ) {
   }
 
   done() {
     this.loading = this.loadingCtrl.create({
-      content: '正在处理...'
+      content: this.translateService.instant("PLEASE_WAIT")
     });
 
     this.loading.present();
@@ -33,7 +36,7 @@ export class ResetPasswordComponent {
     .subscribe(res => {
       console.info(res);
       this.toastCtrl.create({
-        message: '密码已成功重置',
+        message: this.translateService.instant("PASSWORD_RESETTED"),
         position: 'middle',
         duration: 2000
       }).present(); 
@@ -41,7 +44,7 @@ export class ResetPasswordComponent {
       this.viewCtrl.dismiss();
     }, err => {
       this.toastCtrl.create({
-        message: '密码修改重置:' + err.json().data.message,
+        message: this.translateService.instant("OPERATION_FAILED") + ':' + err.json().data.message,
         position: 'middle',
         duration: 50000
       }).present(); 
@@ -51,7 +54,7 @@ export class ResetPasswordComponent {
 
   getQuestionFromEmail(){
     this.loading = this.loadingCtrl.create({
-      content: '正在获取...'
+      content: this.translateService.instant("PLEASE_WAIT")
     });
 
     this.loading.present();
@@ -63,7 +66,7 @@ export class ResetPasswordComponent {
         this.loading.dismiss();
       }, err => {
         this.toastCtrl.create({
-          message: '获取重置密码的问题失败:' + err.json().data.message,
+          message: this.translateService.instant("OPERATION_FAILED") + ':' + err.json().data.message,
           position: 'middle',
           duration: 50000
         }).present(); 

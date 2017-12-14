@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 
 import { NavController, ToastController } from 'ionic-angular';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import {ForumService} from '../../providers/forum-service';
 import {ResourceService} from '../../providers/resource-service';
 
@@ -21,6 +23,7 @@ export class ForumBoardListComponent {
 
   constructor(public navCtrl: NavController,
     public toastCtrl: ToastController,     
+    public translateService: TranslateService,    
     public resourceService :ResourceService,     
     public forumService:ForumService,    
   )
@@ -39,7 +42,7 @@ export class ForumBoardListComponent {
       },
       (_error: any) =>{
         this.toastCtrl.create({
-          message: '获取数据出错,请检查您的网络连接情况.' + _error,
+          message: this.translateService.instant("ACCESS_DATA_ERROR") + _error,
           position: 'middle',
           duration: 10000
         }).present();

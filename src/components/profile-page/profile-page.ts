@@ -4,6 +4,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { NavController, ModalController, LoadingController, 
   ToastController,Loading,ActionSheetController } from 'ionic-angular';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import { ImageCustomer } from '../../models/image-customer';
 
 import { UserService } from '../../providers/user-service';
@@ -31,6 +33,7 @@ export class ProfilePageComponent implements ImageCustomer{
     public userService: UserService,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
+    public translateService: TranslateService,  
     private takePictureService: TakePictureServiceProvider,
     public sanitizer: DomSanitizer){
   }
@@ -38,7 +41,7 @@ export class ProfilePageComponent implements ImageCustomer{
   // 因为此方式容易导致android客户端app闪退, 目前暂时放弃
   setAvatar(){ 
     this.loading = this.loadingCtrl.create({
-      content: '正在处理...'
+      content: this.translateService.instant("PLEASE_WAIT")
     });
     this.loading.present();
 
@@ -46,7 +49,7 @@ export class ProfilePageComponent implements ImageCustomer{
     .subscribe(res => {
       console.info(res);
       this.toastCtrl.create({
-        message: '头像已成功修改',
+        message: this.translateService.instant("SUCCESSFULLY_SUBMITTED"),
         position: 'middle',
         duration: 5000
       }).present(); 
@@ -54,7 +57,7 @@ export class ProfilePageComponent implements ImageCustomer{
       this.loading.dismiss();
     }, err => {
       this.toastCtrl.create({
-        message: '头像修改失败:' + err.json().data.message,
+        message: this.translateService.instant("OPERATION_FAILED") + ':' + err.json().data.message,
         position: 'middle',
         duration: 10000
       }).present(); 
@@ -64,7 +67,7 @@ export class ProfilePageComponent implements ImageCustomer{
 
   setAvatarWithFilePath(){
     this.loading = this.loadingCtrl.create({
-      content: '正在上传头像文件...'
+      content: this.translateService.instant("PLEASE_WAIT")
     });
     this.loading.present();
 
@@ -74,10 +77,10 @@ export class ProfilePageComponent implements ImageCustomer{
 
   changeAvatar() {
     let actionSheet = this.actionSheetCtrl.create({
-      title: '更改头像',
+      title: this.translateService.instant("CHANGE_PERSONAL_IMAGE"),
       buttons: [
         {
-          text: '从相机(推荐)',
+          text: this.translateService.instant("FROM_CAMERA"),
           handler: () => {
             if(!!(window as any).cordova){
               this.takePictureService.setImageFromCamera(this);
@@ -88,12 +91,12 @@ export class ProfilePageComponent implements ImageCustomer{
             }            
           }
         },{
-          text: '从图库',
+          text: this.translateService.instant("FROM_LIBRARY"),
           handler: () => {
             this.takePictureService.setImageFromLibrary(this);
           }
         },{
-          text: '取消',
+          text: this.translateService.instant("CANCEL"),
           role: 'cancel',
           handler: () => {
           }
@@ -105,7 +108,7 @@ export class ProfilePageComponent implements ImageCustomer{
 
   private avatarUploadedOK(self, res){
     self.toastCtrl.create({
-      message: '头像已成功上传',
+      message: this.translateService.instant("SUCCESSFULLY_SUBMITTED"),
       position: 'middle',
       duration: 5000
     }).present(); 
@@ -115,7 +118,7 @@ export class ProfilePageComponent implements ImageCustomer{
 
   private avatarUploadedFail(self,err){
     self.toastCtrl.create({
-      message: '头像修改失败:' + err.json().data.message,
+      message: this.translateService.instant("OPERATION_FAILED") + ':' + err.json().data.message,
       position: 'middle',
       duration: 10000
     }).present(); 

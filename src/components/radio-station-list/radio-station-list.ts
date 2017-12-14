@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { Refresher, ToastController, NavController } 
   from 'ionic-angular';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import { RadioService } from '../../providers/radio-service';
 import {ResourceService} from '../../providers/resource-service';
 
@@ -25,6 +27,7 @@ export class RadioStationListComponent {
 
   constructor(public navCtrl: NavController,
     public toastCtrl: ToastController,
+    public translateService: TranslateService,  
     public resourceService :ResourceService,
     public radioService: RadioService, //此处调用服务的构造函数来激发从storage中获取缓存的节目列表
     ) 
@@ -44,7 +47,7 @@ export class RadioStationListComponent {
           this.items = _data;
           refresher && refresher.complete();
           refresher && this.toastCtrl.create({
-            message: '已刷新...',
+            message: this.translateService.instant("REFRESHED"),
             position: 'middle',
             duration: 1000
           }).present();           
@@ -53,7 +56,7 @@ export class RadioStationListComponent {
       (_error: any) =>{
         refresher && refresher.complete();
         refresher && this.toastCtrl.create({
-          message: '获取数据出错,请检查您的网络连接情况.' + _error,
+          message: this.translateService.instant("ACCESS_DATA_ERROR") + _error,
           position: 'middle',
           duration: 10000
         }).present();

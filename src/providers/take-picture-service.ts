@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import { ToastController } from 'ionic-angular';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -15,7 +17,10 @@ export class TakePictureServiceProvider {
   constructor(public toastCtrl: ToastController, 
     private camera: Camera,
     private filePath: FilePath,
-    private device: Device,) {
+    private device: Device,
+    public translateService: TranslateService,
+  )
+  {
   }
 
   public setImageFromCamera(caller: ImageCustomer){
@@ -46,7 +51,7 @@ export class TakePictureServiceProvider {
       }, 
       (err) => { //获取拍照图片出错, 排除用户自己取消了操作的情况
         if(!err.toString().includes('cancel')){
-          this.presentToast('获取拍照图片出错' + err);
+          this.presentToast(this.translateService.instant("ACCESS_PHOTO_FAIL") + err);
         }
       }
     );
@@ -69,7 +74,7 @@ export class TakePictureServiceProvider {
             caller.imageFileData = filePath;
           })
           .catch(err => { //获取拍照图片出错
-            this.presentToast('获取拍照图片出错' + err);
+            this.presentToast(this.translateService.instant("ACCESS_PHOTO_FAIL") + err);
           });
         } else{
           caller.imageRetrieved = true;
@@ -78,7 +83,7 @@ export class TakePictureServiceProvider {
       }, 
       (err) => { //获取拍照图片出错, 排除用户自己取消了操作的情况
         if(!err.toString().includes('cancel')){
-          this.presentToast('获取拍照图片出错' + err);
+          this.presentToast(this.translateService.instant("ACCESS_PHOTO_FAIL") + err);
         }
       }
     );

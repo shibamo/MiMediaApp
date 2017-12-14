@@ -2,6 +2,8 @@ import { Component} from '@angular/core';
 import { NavController,NavParams, ModalController,
   ToastController, Refresher} from 'ionic-angular';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import {ForumService} from '../../providers/forum-service';
 import {ResourceService} from '../../providers/resource-service';
 import {UserService} from '../../providers/user-service';
@@ -26,6 +28,7 @@ export class ForumThreadListComponent {
     public toastCtrl: ToastController, 
     public modalCtrl: ModalController,
     public navParams: NavParams,
+    public translateService: TranslateService,      
     public forumService:ForumService,
     public resourceService :ResourceService,    
     public userService :UserService       
@@ -50,7 +53,7 @@ export class ForumThreadListComponent {
       (_error: any) =>{
         refresher && refresher.complete();
         refresher && this.toastCtrl.create({
-          message: '获取数据出错,请检查您的网络连接情况.' + _error,
+          message: this.translateService.instant("ACCESS_DATA_ERROR") + _error,
           position: 'middle',
           duration: 5000
         }).present();
@@ -84,7 +87,7 @@ export class ForumThreadListComponent {
           }
         } else{
           this.toastCtrl.create({
-            message: '已无更多数据',
+            message: this.translateService.instant("NO_MORE_DATA"),
             position: 'middle',
             duration: 2000
           }).present();
@@ -94,7 +97,7 @@ export class ForumThreadListComponent {
       },
       (_error: any) =>{
         this.toastCtrl.create({
-          message: '获取数据出错,请检查您的网络连接情况.' + _error,
+          message: this.translateService.instant("ACCESS_DATA_ERROR") + _error,
           position: 'middle',
           duration: 5000
         }).present();
@@ -118,7 +121,7 @@ export class ForumThreadListComponent {
         (LoginPage);
 
       const toast = this.toastCtrl.create({
-        message: '请先登录再发帖',
+        message: this.translateService.instant("NEED_LOGINED_USER"),
         position: 'middle',
         duration: 1000
       });
