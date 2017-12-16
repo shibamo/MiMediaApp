@@ -2,7 +2,7 @@
 <widget id="com.dasianmedia.cp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>D亚洲传媒</name>
     <description>Communication Platform of D Asian Media. 密西根中文广播电视台DCRTV是美国密西根州当地唯一华人立体化媒体公司。我们拥有官方网站，手机App，24个微信群，实体电台录音室，节目演播室。我们组织举办各类活动及节目录制，积极促进文化经济交流互访促进活动，是北美华文媒体联合会成员。</description>
-    <author email="5544537@qq.com" href="https://github.com/shibamo">Chao Qin(秦超)</author>
+    <author email="5544537@qq.com" href="http://www.dchineseradio.com/">Chao Qin(秦超)</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
@@ -91,7 +91,6 @@
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
     <icon src="resources/android/icon/drawable-xhdpi-icon.png" />
-    <allow-navigation href="http://192.168.0.18:8100" />
     <engine name="android" spec="~6.1.2" />
     <engine name="ios" spec="^4.4.0" />
     <plugin name="com.paypal.cordova.mobilesdk" spec="~3.5.0" />
