@@ -53,6 +53,7 @@
     "cordova-plugin-geolocation": "^2.4.3",
     "cordova-plugin-globalization": "^1.0.8",
     "cordova-plugin-inappbrowser": "^1.7.2",
+    "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-network-information": "~1.3.3",
     "cordova-plugin-safariviewcontroller": "^1.5.2",
     "cordova-plugin-splashscreen": "~4.0.1",
@@ -70,7 +71,7 @@
     "zone.js": "^0.8.17"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "1.3.12",
+    "@ionic/app-scripts": "^3.1.5",
     "@ionic/cli-plugin-cordova": "1.5.0",
     "@ionic/cli-plugin-ionic-angular": "1.4.1",
     "@types/lodash": "^4.14.44",
@@ -108,10 +109,11 @@
       },
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-geolocation": {
-        "GEOLOCATION_USAGE_DESCRIPTION": "需要读取您的位置以提供服务"
+        "GEOLOCATION_USAGE_DESCRIPTION": "Need your location"
       },
       "cordova-plugin-safariviewcontroller": {},
-      "cordova-plugin-globalization": {}
+      "cordova-plugin-globalization": {},
+      "cordova-plugin-ionic-webview": {}
     }
   }
 }
