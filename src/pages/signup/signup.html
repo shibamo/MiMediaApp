@@ -51,21 +51,7 @@
 			<ion-item>
 				<ion-label stacked color="primary">{{'RESET_PASSWORD_QUESTION' | translate}} *</ion-label>
 				<ion-select [(ngModel)]="signup.question" name="question" multiple="false" [cancelText]='"CANCEL" | translate' [okText]='"SAVE" | translate' #question="ngModel">
-					<ion-option value="您最喜欢的电视剧?">您最喜欢的电视剧?</ion-option>
-					<ion-option value="您最喜欢的电影?">您最喜欢的电影?</ion-option>
-					<ion-option value="您最喜欢的影视明星?">您最喜欢的影视明星?</ion-option>
-					<ion-option value="您最喜欢的动物?">您最喜欢的动物?</ion-option>
-					<ion-option value="您最喜欢的菜名?">您最喜欢的菜名?</ion-option>
-					<ion-option value="您最喜欢的商品品牌?">您最喜欢的商品品牌?</ion-option>
-					<ion-option value="您最喜欢的饮料品牌?">您最喜欢的饮料品牌?</ion-option>
-					<ion-option value="您最喜欢的饭店名?">您最喜欢的饭店名?</ion-option>
-					<ion-option value="您最喜欢的食物名?">您最喜欢的食物名?</ion-option>
-					<ion-option value="您最喜欢的旅游地点?">您最喜欢的旅游地点?</ion-option>
-					<ion-option value="您的第一个小学名?">您的第一个小学名?</ion-option>
-					<ion-option value="您第一个伴侣的生日?">您第一个伴侣的生日?</ion-option>
-					<ion-option value="您第一个孩子的生日?">您第一个孩子的生日?</ion-option>
-					<ion-option value="您父亲的出生城市?">您父亲的出生城市?</ion-option>
-					<ion-option value="您母亲的出生城市?">您母亲的出生城市?</ion-option>
+					<ion-option *ngFor="let q of quesitons" [value]="q.val">{{q.text}}</ion-option>
 				</ion-select>
 			</ion-item>
 
@@ -78,7 +64,7 @@
 			<ion-item>
 				<ion-label stacked color="primary" style="margin-top: 4px;">
 					<button ion-button color="secondary" round small
-					(tap)='presentUserAgreement($event)'>{{'AGREE_AGREEMENT' | translate}}? &nbsp;{{'VIEW' | translate}} &nbsp;
+					(tap)='presentUserAgreement($event)'>{{'AGREE_AGREEMENT' | translate}}? &nbsp;
 					<ion-icon name="eye"> </ion-icon></button>
 				</ion-label>
 				<ion-toggle [(ngModel)]="signup.agreeUserAgreement" name="agreeUserAgreement" #name="ngModel"></ion-toggle>
