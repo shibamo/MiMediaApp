@@ -121,6 +121,40 @@ export class ForumService {
     return seq;
   }
 
+  deleteMain(forumThread: any){
+    let seq = this.api.post('forum-thread/deleteMyThread', forumThread,
+      this.userService.buildAuthenticationOptions()).share();
+
+    seq.map(res => res.json())
+      .subscribe(res => {
+        //console.log(res);
+        if (res.status == 'success') {
+        } else {
+        }
+      }, err => {
+        console.error('ERROR', err);
+      });
+
+    return seq;
+  }
+
+  deleteReply(reply: any){
+    let seq = this.api.post('forum-thread/deleteMyReply', reply,
+      this.userService.buildAuthenticationOptions()).share();
+
+    seq.map(res => res.json())
+      .subscribe(res => {
+        //console.log(res);
+        if (res.status == 'success') {
+        } else {
+        }
+      }, err => {
+        console.error('ERROR', err);
+      });
+
+    return seq;
+  }
+
   uploadThreadImage(caller: any, imageFilePath: string, okHandler: any, failHandler: any, payload?: any){
     this.file.resolveLocalFilesystemUrl(imageFilePath) 
     .then(entry => (<FileEntry>entry).file(

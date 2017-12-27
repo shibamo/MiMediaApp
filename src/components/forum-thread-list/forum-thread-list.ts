@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { NavController,NavParams, ModalController,
-  ToastController, Refresher} from 'ionic-angular';
+  ToastController, Refresher, Events } from 'ionic-angular';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -28,6 +28,7 @@ export class ForumThreadListComponent {
     public toastCtrl: ToastController, 
     public modalCtrl: ModalController,
     public navParams: NavParams,
+    public events: Events,
     public translateService: TranslateService,      
     public forumService:ForumService,
     public resourceService :ResourceService,    
@@ -42,17 +43,17 @@ export class ForumThreadListComponent {
     this.updateList(null);
   }
 
-  updateList(refresher?: Refresher) {
+  updateList(refresher?: Refresher|any) {
     this.forumService.getThreadsData
     (this.board.id, 1, refresher ? true : false).
     subscribe(
       (data: Array<any>) => {
         this.items = data;
-        refresher && refresher.complete();
+        refresher && refresher.complete && refresher.complete();
       },
       (_error: any) =>{
-        refresher && refresher.complete();
-        refresher && this.toastCtrl.create({
+        refresher && refresher.complete && refresher.complete();
+        refresher && refresher.complete && this.toastCtrl.create({
           message: this.translateService.instant("ACCESS_DATA_ERROR") + _error,
           position: 'middle',
           duration: 5000
@@ -108,6 +109,12 @@ export class ForumThreadListComponent {
   }
 
   gotoThread(item){
+    this.events.subscribe('thread-changed-events', (needRefreshList : boolean) => {
+      needRefreshList && this.updateList(needRefreshList);
+
+      this.events.unsubscribe('thread-changed-events');
+    });
+
     this.navCtrl.push(ForumThreadItemComponent, {
       item: item,
       board: this.board
@@ -137,7 +144,7 @@ export class ForumThreadListComponent {
       (ForumThreadCreateComponent,{board: this.board});
     addModal.onDidDismiss(item => {
       if (item) {
-        this.updateList();
+        this.updateList(true);
       }
     });
     addModal.present();

@@ -1,5 +1,7 @@
 {
   "MENU": "菜单",
+  "MODIFY": "修改",
+  "DELETE": "删除",  
   "CANCEL": "取消",
   "BACK_BUTTON_TEXT" : "返回",
   "SAVE" : "保存",  

@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
 import { NavController,NavParams, ModalController,
-  ToastController, ActionSheetController } from 'ionic-angular';
+  ToastController, ActionSheetController, ViewController,Events } from 'ionic-angular';
 
 import { TranslateService } from '@ngx-translate/core';
 
 import {ForumThreadReplyComponent} from '../forum-thread-reply/forum-thread-reply';
 import {ComplainThreadComponent} from '../complain-thread/complain-thread';
 import {ComplainThreadReplyComponent} from '../complain-thread-reply/complain-thread-reply';
+
 import {SettingService} from '../../providers/setting-service';
 import {ResourceService} from '../../providers/resource-service';
 import {UserLoginCheckServiceProvider} from '../../providers/user-login-check-service';
 import {WechatShareServiceProvider, ShareSceneType} from '../../providers/wechat-share-service';
 import {ContentVisitServiceProvider} from '../../providers/content-visit-service';
+import {ForumService} from '../../providers/forum-service';
+import {UserService} from '../../providers/user-service';
 
 @Component({
   selector: 'forum-thread-item',
@@ -26,12 +29,16 @@ export class ForumThreadItemComponent {
     public toastCtrl: ToastController, 
     public modalCtrl: ModalController,    
     public navParams: NavParams,
+    public viewCtrl: ViewController,
+    public events: Events,
     public translateService: TranslateService,     
     public settingService :SettingService,
     public resourceService :ResourceService,        
     public userLoginCheckService :UserLoginCheckServiceProvider,
     public wechatShareService: WechatShareServiceProvider,
     public contentVisitService: ContentVisitServiceProvider,
+    public forumService : ForumService,
+    public userService : UserService,
   ) {
     // 导航到本页时需要传入指定论坛的thread信息项
     this.item = navParams.get('item');
@@ -57,7 +64,9 @@ export class ForumThreadItemComponent {
           position: 'middle',
           duration: 3000
         });
-        toast.present(); 
+        toast.present();
+        
+        this.events.publish('thread-changed-events', true);
       }
     });
 
@@ -145,6 +154,97 @@ export class ForumThreadItemComponent {
           role: 'cancel',
           handler: () => {
           }
+        }
+      ]
+    }).present();
+  }
+
+  // 主贴的编辑操作选择
+  public threadMainOps(item){
+    let that = this;
+    this.actionSheetService.create({
+      title: this.translateService.instant("OPERATION"),
+      buttons: [
+        // {
+        //   text: this.translateService.instant("MODIFY"),
+        //   handler: () => {
+        //     that.wechatShareService.shareForumThread(ShareSceneType.FriendsCircle,
+        //       item.name,
+        //       "",
+        //       "",
+        //       this.resourceService.generalWebviewUrlPrefix + 
+        //         this.settingService.forumThreadWebviewPath + item.id);
+        //   }
+        // },
+        {
+          text: this.translateService.instant("DELETE"),
+          handler: () => {
+            this.forumService.deleteMain({forumThreadId: that.item.id})
+            .map(res => res.json())
+            .subscribe(
+              res => {
+                console.log(res);
+                if (res.status == 'success') {
+                  console.log("成功删除");
+                  this.navCtrl.pop().then(()=>{
+                    this.events.publish('thread-changed-events', true);
+                  });
+                } else {
+                }
+              }, err => {
+                console.error('ERROR', err);
+              }
+            );
+          }
+        },{
+          text: this.translateService.instant("CANCEL"),
+          role: 'cancel',
+          handler: () => {}
+        }
+      ]
+    }).present();
+  }
+
+  // 回复贴的编辑操作选择
+  public threadReplyOps(reply){
+    this.actionSheetService.create({
+      title: this.translateService.instant("OPERATION"),
+      buttons: [
+        // {
+        //   text: this.translateService.instant("MODIFY"),
+        //   handler: () => {
+        //     that.wechatShareService.shareForumThread(ShareSceneType.FriendsCircle,
+        //       item.name,
+        //       "",
+        //       "",
+        //       this.resourceService.generalWebviewUrlPrefix + 
+        //         this.settingService.forumThreadWebviewPath + item.id);
+        //   }
+        // },
+        {
+          text: this.translateService.instant("DELETE"),
+          handler: () => {
+            this.forumService.deleteReply({threadReplyId: reply.id})
+            .map(res => res.json())
+            .subscribe(
+              res => {
+                console.log(res);
+                if (res.status == 'success') {
+                  console.log("成功删除");
+                  this.navCtrl.pop().then(()=>{
+                    this.events.publish('thread-changed-events', true);
+                  });
+                } else {
+                }
+              }, err => {
+                console.error('ERROR', err);
+              }
+            );
+          }
+        },{
+          text: this.translateService.instant("CANCEL"),
+          role: 'cancel',
+          handler: () => {}
         }
       ]
     }).present();

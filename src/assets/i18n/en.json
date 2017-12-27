@@ -1,5 +1,7 @@
 {
   "MENU": "Menu",
+  "MODIFY": "Modify",
+  "DELETE": "Delete",    
   "CANCEL": "Cancel",
   "BACK_BUTTON_TEXT" : "Back",
   "SAVE" : "Save",    
