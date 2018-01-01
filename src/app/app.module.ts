@@ -66,6 +66,7 @@ import { UserAgreementComponent } from '../components/user-agreement/user-agreem
 import { ComplainThreadComponent } from '../components/complain-thread/complain-thread';
 import { ComplainThreadReplyComponent } from '../components/complain-thread-reply/complain-thread-reply';
 import { ResetPasswordComponent } from '../components/reset-password/reset-password';
+import { YoutubeLiveChannelComponent } from '../components/youtube-live-channel/youtube-live-channel';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -99,6 +100,7 @@ export function createTranslateLoader(http: HttpClient) {
     ComplainThreadComponent,
     ComplainThreadReplyComponent,
     ResetPasswordComponent,
+    YoutubeLiveChannelComponent,
   ],
   imports: [
     BrowserModule,
@@ -148,6 +150,7 @@ export function createTranslateLoader(http: HttpClient) {
     ComplainThreadComponent,
     ComplainThreadReplyComponent,
     ResetPasswordComponent,
+    YoutubeLiveChannelComponent,
   ],
   providers: [
     Camera,

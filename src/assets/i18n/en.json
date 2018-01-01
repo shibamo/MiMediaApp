@@ -99,6 +99,9 @@
   "MOST_RECENT":"Newest",
   "REFRESHED":"Refreshed...",
 
+  "LIVE":"Live",
+  "BROADCAST_SCHEDULE":"Broadcast schedule",
+
   "UPLOADING_IMAGE":"Uploading image...",
   "UPLOAD_IMAGE_FAIL":"Uploading image failed:",
   

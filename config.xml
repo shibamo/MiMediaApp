@@ -10,6 +10,7 @@
     <allow-navigation href="file://*/*" />
     <allow-navigation href="content://*/*" />
     <allow-navigation href="asset-library://*/*" />
+    <allow-navigation href="https://*youtube.com/*" />
     <feature name="CDVWKWebViewEngine">
         <param name="ios-package" value="CDVWKWebViewEngine" />
     </feature>

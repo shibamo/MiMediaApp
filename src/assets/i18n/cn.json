@@ -99,6 +99,9 @@
   "MOST_RECENT":"最新",
   "REFRESHED":"已刷新...",
 
+  "LIVE":"直播",
+  "BROADCAST_SCHEDULE":"播出时间",
+
   "UPLOADING_IMAGE":"正在上传图片文件...",
   "UPLOAD_IMAGE_FAIL":"上传图片失败:",
 

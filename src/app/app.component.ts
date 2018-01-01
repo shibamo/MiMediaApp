@@ -22,6 +22,7 @@ import { ProfilePageComponent } from '../components/profile-page/profile-page';
 import { ForumBoardListComponent } from '../components/forum-board-list/forum-board-list';
 import { TVStationListComponent } from '../components/tv-station-list/tv-station-list';
 import { RadioProgrameListComponent } from '../components/radio-programe-list/radio-programe-list';
+import { YoutubeLiveChannelComponent} from '../components/youtube-live-channel/youtube-live-channel';
 // import { SettingComponent } from '../components/setting/setting';
 
 export interface PageInterface {
@@ -52,13 +53,15 @@ export class MyApp {
   ];
 
   loggedOutPages: PageInterface[] = [
+    { title: 'LIVE', name: 'YoutubeLiveChannel', component: YoutubeLiveChannelComponent, index: 4, icon: 'pulse', highlight: true  , isPage: false}, 
     { title: 'LOGIN', name: 'LoginPage', component: LoginPage, icon: 'log-in' , isPage: false},
     { title: 'REGISTER', name: 'SignupPage', component: SignupPage, icon: 'person-add' , isPage: false},
-    { title: 'ABOUT', name: 'AboutPage', component: AboutPage, index: 3, icon: 'information-circle' , isPage: false},    
+    { title: 'ABOUT', name: 'AboutPage', component: AboutPage, index: 3, icon: 'information-circle' , isPage: false},
     // { title: '设置', name: 'SettingPage', component: SettingComponent, icon: 'settings' , isPage: false},
   ];
   
   loggedInPages: PageInterface[] = [
+    { title: 'LIVE', name: 'YoutubeLiveChannel', component: YoutubeLiveChannelComponent, index: 4, icon: 'pulse', highlight: true  , isPage: false},
     { title: 'PROFILE', name: 'ProfilePageComponent', component: ProfilePageComponent, icon: 'person' , isPage: true},
     { title: 'ABOUT', name: 'AboutPage', component: AboutPage, index: 3, icon: 'information-circle' , isPage: false},    
     // { title: '设置', name: 'SettingPage', component: SettingComponent, icon: 'settings' , isPage: false},
