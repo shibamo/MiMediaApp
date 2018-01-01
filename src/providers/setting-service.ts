@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 export class SettingService {
   // defaultHost: string = 'https://test1.mtest.dchineseradio.com/';
   defaultHost: string = 'https://prod1.mapp.dchineseradio.com/';
-  // defaultHost: string = 'http://homestead.app/';
+  // defaultHost: string = 'http://homestead.appl/';
 
   serverResourceBasePath: string = this.defaultHost; 
   apiUrlPath: string = this.defaultHost + 'api';
