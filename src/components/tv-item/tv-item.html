@@ -9,8 +9,13 @@
 
 <ion-content>
   <ion-card>
-    <video controls="controls" width="100%" autoplay 
-    [src]="resourceService.tvVideoUrlPrefix + item.url" ></video>
+
+    <iframe *ngIf="youtubeLiveUrl" width="100%" height="300px" [src]="youtubeLiveUrl" allow="autoplay" allowfullscreen frameborder="0" 
+    (load)="youtubeLiveUrl ? handleIFrameLoadEvent() : null"></iframe>
+
+    <video *ngIf="!youtubeLiveUrl" controls="controls" width="100%" autoplay 
+    [src]="resourceService.tvVideoUrlPrefix + item.url"></video>
+
     <ion-card-content>
       <ion-card-title>
         {{item.name}}
