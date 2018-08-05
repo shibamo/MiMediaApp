@@ -10,13 +10,13 @@ import {WechatShareServiceProvider, ShareSceneType} from '../../providers/wechat
 import {ContentVisitServiceProvider} from '../../providers/content-visit-service';
 
 /**
- * 用于显示视频节目的信息并提供播放视频的功能
+ * 用于显示Youtube直播节目的信息并提供播放该Youtube直播的功能
  */
 @Component({
-  selector: 'tv-item',
-  templateUrl: 'tv-item.html'
+  selector: 'live-item',
+  templateUrl: 'live-item.html'
 })
-export class TVItemComponent {
+export class LiveItemComponent {
   item: any;
   youtubeLiveUrl: SafeResourceUrl;
   loading: Loading;
@@ -51,45 +51,12 @@ export class TVItemComponent {
     }
 
     // 统计访问量
-    contentVisitService.sendTvVisit(this.item.id);
+    // contentVisitService.sendTvVisit(this.item.id);
   }
 
   public handleIFrameLoadEvent(): void {
     this.loading.dismiss();
   }
 
-  public share(item){
-    let that = this;
-    this.actionSheetService.create({
-      title: this.translateService.instant("WECHAT_SHARE"),
-      buttons: [
-        {
-          text: this.translateService.instant("WECHAT_TO_CIRCLE"),
-          handler: () => {
-            that.wechatShareService.shareTVPrograme(ShareSceneType.FriendsCircle,
-              item.name,
-              item.shortContent,
-              this.resourceService.tvVideoUrlPrefix + item.image,
-              this.resourceService.generalWebviewUrlPrefix + 
-                this.settingService.tvProgrameWebviewPath + item.id);
-          }
-        },{
-          text: this.translateService.instant("WECHAT_TO_FRIEND"),
-          handler: () => {
-            that.wechatShareService.shareTVPrograme(ShareSceneType.ToOneFriend,
-              item.name,
-              item.shortContent,
-              this.resourceService.tvVideoUrlPrefix + item.image,
-              this.resourceService.generalWebviewUrlPrefix + 
-                this.settingService.tvProgrameWebviewPath + item.id);
-          }
-        },{
-          text: this.translateService.instant("CANCEL"),
-          role: 'cancel',
-          handler: () => {
-          }
-        }
-      ]
-    }).present();
-  }
+
 }

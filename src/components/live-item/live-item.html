@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>TV - {{item.name}}</ion-title>
+    <ion-title>Live - {{item.name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -13,19 +13,10 @@
     <iframe *ngIf="youtubeLiveUrl" width="100%" height="300px" [src]="youtubeLiveUrl" gesture="media" allow="encrypted-media" frameborder="0" allowFullScreen="allowFullScreen"
     (load)="youtubeLiveUrl ? handleIFrameLoadEvent() : null"></iframe>
 
-    <video *ngIf="!youtubeLiveUrl" controls="controls" width="100%" autoplay 
-    [src]="resourceService.tvVideoUrlPrefix + item.url"></video>
-
     <ion-card-content>
       <ion-card-title>
         {{item.name}}
       </ion-card-title>
-      <p *ngFor="let _content of item.content.split('\n')">
-        {{_content}}
-      </p>
-      <button ion-button icon-only (tap)="share(item)" small>
-        <ion-icon ios="ios-share" md="md-share"></ion-icon>
-      </button>      
     </ion-card-content>
   </ion-card>
 </ion-content>

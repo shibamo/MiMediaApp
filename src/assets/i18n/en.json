@@ -106,5 +106,7 @@
   "UPLOAD_IMAGE_FAIL":"Uploading image failed:",
   
   "ACCESS_DATA_ERROR":"Access data error.",
-  "NO_MORE_DATA":"No more data left"
+  "NO_MORE_DATA":"No more data left",
+
+  "NO_DATA_NOW": "No data now"
 }

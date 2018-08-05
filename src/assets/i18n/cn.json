@@ -106,5 +106,7 @@
   "UPLOAD_IMAGE_FAIL":"上传图片失败:",
 
   "ACCESS_DATA_ERROR":"获取数据出错,请检查您的网络连接情况.",
-  "NO_MORE_DATA":"已无更多数据"
+  "NO_MORE_DATA":"已无更多数据",
+
+  "NO_DATA_NOW": "暂无数据"
 }

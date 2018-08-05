@@ -27,6 +27,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ResourceService } from '../providers/resource-service';
 import { AdSettingService } from '../providers/ad-setting-service';
 import { VideoService } from '../providers/video-service';
+import { LiveService } from '../providers/live-service';
 import { RadioService } from '../providers/radio-service';
 import { ForumService } from '../providers/forum-service';
 import { SettingService } from '../providers/setting-service';
@@ -67,6 +68,7 @@ import { ComplainThreadComponent } from '../components/complain-thread/complain-
 import { ComplainThreadReplyComponent } from '../components/complain-thread-reply/complain-thread-reply';
 import { ResetPasswordComponent } from '../components/reset-password/reset-password';
 import { YoutubeLiveChannelComponent } from '../components/youtube-live-channel/youtube-live-channel';
+import { LiveItemComponent } from '../components/live-item/live-item';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -101,6 +103,7 @@ export function createTranslateLoader(http: HttpClient) {
     ComplainThreadReplyComponent,
     ResetPasswordComponent,
     YoutubeLiveChannelComponent,
+    LiveItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -151,6 +154,7 @@ export function createTranslateLoader(http: HttpClient) {
     ComplainThreadReplyComponent,
     ResetPasswordComponent,
     YoutubeLiveChannelComponent,
+    LiveItemComponent,
   ],
   providers: [
     Camera,
@@ -173,6 +177,7 @@ export function createTranslateLoader(http: HttpClient) {
     UserData, 
     UserService,
     VideoService,
+    LiveService,
     RadioService,
     ForumService,
     SimpleStorageService,

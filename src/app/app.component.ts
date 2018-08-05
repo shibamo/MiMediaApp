@@ -49,11 +49,13 @@ export class MyApp {
   appPages: PageInterface[] = [
     { title: "VIDEO", name: 'TabsPage', component: TabsPage, tabComponent: TVStationListComponent, index: 0, icon: 'videocam', highlight: true, isPage: true },
     { title: 'RADIO', name: 'TabsPage', component: TabsPage, tabComponent: RadioProgrameListComponent, index:1, icon: 'radio', highlight: true , isPage: true},    
-    { title: 'FORUM', name: 'TabsPage', component: TabsPage, tabComponent: ForumBoardListComponent, index: 2, icon: 'contacts', highlight: true , isPage: true},
+    { title: 'FORUM', name: 'TabsPage', component: TabsPage, tabComponent: ForumBoardListComponent, 
+    index: 2, icon: 'contacts', highlight: true , isPage: true},
+    { title: 'LIVE', name: 'TabsPage', component: TabsPage, tabComponent: YoutubeLiveChannelComponent, index: 3, icon: 'logo-youtube', highlight: true , isPage: true},
   ];
 
   loggedOutPages: PageInterface[] = [
-    { title: 'LIVE', name: 'YoutubeLiveChannel', component: YoutubeLiveChannelComponent, index: 4, icon: 'pulse', highlight: true  , isPage: false}, 
+    //{ title: 'LIVE', name: 'YoutubeLiveChannel', component: YoutubeLiveChannelComponent, index: 4, icon: 'pulse', highlight: true  , isPage: false}, 
     { title: 'LOGIN', name: 'LoginPage', component: LoginPage, icon: 'log-in' , isPage: false},
     { title: 'REGISTER', name: 'SignupPage', component: SignupPage, icon: 'person-add' , isPage: false},
     { title: 'ABOUT', name: 'AboutPage', component: AboutPage, index: 3, icon: 'information-circle' , isPage: false},
@@ -61,7 +63,7 @@ export class MyApp {
   ];
   
   loggedInPages: PageInterface[] = [
-    { title: 'LIVE', name: 'YoutubeLiveChannel', component: YoutubeLiveChannelComponent, index: 4, icon: 'pulse', highlight: true  , isPage: false},
+    //{ title: 'LIVE', name: 'YoutubeLiveChannel', component: YoutubeLiveChannelComponent, index: 4, icon: 'pulse', highlight: true  , isPage: false},
     { title: 'PROFILE', name: 'ProfilePageComponent', component: ProfilePageComponent, icon: 'person' , isPage: true},
     { title: 'ABOUT', name: 'AboutPage', component: AboutPage, index: 3, icon: 'information-circle' , isPage: false},    
     // { title: '设置', name: 'SettingPage', component: SettingComponent, icon: 'settings' , isPage: false},

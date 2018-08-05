@@ -8,6 +8,8 @@ import { RadioStationListComponent }
   from '../../components/radio-station-list/radio-station-list';
 import { ForumBoardListComponent } 
   from '../../components/forum-board-list/forum-board-list';
+import { YoutubeLiveChannelComponent } 
+  from '../../components/youtube-live-channel/youtube-live-channel';  
 
 @Component({
   templateUrl: 'tabs.html'
@@ -17,6 +19,8 @@ export class TabsPage {
   tab1Root: any = TVStationListComponent;
   tab2Root: any = RadioStationListComponent;
   tab3Root: any = ForumBoardListComponent;
+  tab4Root: any = YoutubeLiveChannelComponent;
+  
   mySelectedIndex: number;
 
   constructor(navParams: NavParams) {

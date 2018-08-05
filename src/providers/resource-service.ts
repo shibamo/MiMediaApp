@@ -12,6 +12,7 @@ export class ResourceService {
   forumImageUrlPrefix : string = '/';
   tvVideoUrlPrefix : string = '/';
   tvImageUrlPrefix : string = '/';
+  liveImageUrlPrefix : string = '/';
   radioAudioUrlPrefix : string = '/';
   radioImageUrlPrefix : string = '/';
   boardImageUrlPrefix : string = '/';
@@ -33,6 +34,7 @@ export class ResourceService {
             this.forumImageUrlPrefix = resourceUrlPrefixes.forumImageUrlPrefix;
             this.tvVideoUrlPrefix = resourceUrlPrefixes.tvVideoUrlPrefix;
             this.tvImageUrlPrefix = resourceUrlPrefixes.tvImageUrlPrefix;
+            this.liveImageUrlPrefix = resourceUrlPrefixes.liveImageUrlPrefix;
             this.radioAudioUrlPrefix = resourceUrlPrefixes.radioAudioUrlPrefix;
             this.radioImageUrlPrefix = resourceUrlPrefixes.radioImageUrlPrefix;
             this.boardImageUrlPrefix = resourceUrlPrefixes.boardImageUrlPrefix;
@@ -54,6 +56,7 @@ export class ResourceService {
       this.forumImageUrlPrefix = res.forumImageUrlPrefix;
       this.tvVideoUrlPrefix = res.tvVideoUrlPrefix;
       this.tvImageUrlPrefix = res.tvImageUrlPrefix;
+      this.liveImageUrlPrefix = res.liveImageUrlPrefix;
       this.radioAudioUrlPrefix = res.radioAudioUrlPrefix;
       this.radioImageUrlPrefix = res.radioImageUrlPrefix;
       this.boardImageUrlPrefix = res.boardImageUrlPrefix;
@@ -61,6 +64,7 @@ export class ResourceService {
       this.generalWebviewUrlPrefix = res.generalWebviewUrlPrefix;
 
       this.storage.set("resourceUrlPrefixes", JSON.stringify(res));
+      
     }, err => {
       console.error('ERROR', err);
     });
