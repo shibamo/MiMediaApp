@@ -6,7 +6,6 @@ import { TranslateService } from '@ngx-translate/core';
 
 import {SettingService} from '../../providers/setting-service';
 import {ResourceService} from '../../providers/resource-service';
-import {WechatShareServiceProvider, ShareSceneType} from '../../providers/wechat-share-service';
 import {ContentVisitServiceProvider} from '../../providers/content-visit-service';
 
 /**
@@ -28,7 +27,6 @@ export class LiveItemComponent {
               public translateService: TranslateService, 
               public settingService :SettingService,
               public resourceService :ResourceService, 
-              public wechatShareService: WechatShareServiceProvider,
               public contentVisitService: ContentVisitServiceProvider)
   {
     // 导航到本页时需要传入视频节目信息项

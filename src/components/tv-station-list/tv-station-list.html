@@ -17,11 +17,21 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-card *ngFor="let item of items" (tap)="gotoStation(item)">
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of items" (tap)="gotoStation(item)" col-6 wrap>
+        <img class="station-image" [src]="resourceService.tvImageUrlPrefix + item.lastPrograme.image" />
+        <div class="station-title">{{item.caption}}</div>
+        <div class="station-subtitle">{{'MOST_RECENT' | translate}}: {{item.lastPrograme.name}}</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- <ion-card *ngFor="let item of items" (tap)="gotoStation(item)">
     <img style="max-height: 200px;" [src]="resourceService.tvImageUrlPrefix + item.lastPrograme.image" />
     <div class="card-title">{{item.caption}}</div>
     <div class="card-subtitle">{{'MOST_RECENT' | translate}}: {{item.lastPrograme.name}}</div>
-  </ion-card>
+  </ion-card> -->
 
 </ion-content>
 
