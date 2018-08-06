@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.dasianmedia.cp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>D亚洲传媒</name>
+    <name>DAsian</name>
     <description>Communication Platform of D Asian Media. 密西根中文广播电视台DCRTV是美国密西根州当地唯一华人立体化媒体公司。我们拥有官方网站，手机App，24个微信群，实体电台录音室，节目演播室。我们组织举办各类活动及节目录制，积极促进文化经济交流互访促进活动，是北美华文媒体联合会成员。</description>
     <author email="5544537@qq.com" href="http://www.dchineseradio.com/">Chao Qin(秦超)</author>
     <content src="index.html" />
